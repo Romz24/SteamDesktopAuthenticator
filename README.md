@@ -1,5 +1,5 @@
 <h1 align="center">
-  <img src="https://raw.githubusercontent.com/Jessecar96/SteamDesktopAuthenticator/master/icon.png" height="64" width="64" />
+  <img src="https://raw.githubusercontent.com/Romz24/SteamDesktopAuthenticator/master/icon.png" height="64" width="64" />
   <br/>
   Steam Desktop Authenticator
 </h1>
@@ -12,7 +12,7 @@
   <p>WARNING: Recently there have been fake versions of SDA floating around that will steal your Steam account. Never download SDA from any place other than this github repo!</p>
 </h3>
 <h3 align="center" style="margin-bottom:0">
-  <a href="https://github.com/Jessecar96/SteamDesktopAuthenticator/releases/latest">[Download Here]</a>
+  <a href="https://github.com/Romz24/SteamDesktopAuthenticator/releases/latest">[Download Here]</a>
 </h3>
 <p align="center">Supports Windows 10 and up.</p>
 <br>
@@ -31,7 +31,7 @@ If you did not follow the directions and did not write your revocation code down
 
 ## Detailed setup instructions
 - Download & Install [.NET 8](https://dotnet.microsoft.com/en-us/download/dotnet/8.0).
-- Visit [the releases page](https://github.com/Jessecar96/SteamDesktopAuthenticator/releases) and download the latest .zip (not the source code one).
+- Visit [the releases page](https://github.com/Romz24/SteamDesktopAuthenticator/releases) and download the latest .zip (not the source code one).
 - Extract the files somewhere very safe on your computer. If you lose the files you can lose access to your Steam account.
 - Run `Steam Desktop Authenticator.exe` and click the button to set up a new account.
 - Login to Steam and follow the instructions to set it up. **Note: you still need a mobile phone that can receive SMS.**
