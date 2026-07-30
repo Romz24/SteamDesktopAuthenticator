@@ -181,14 +181,42 @@ namespace Steam_Desktop_Authenticator
                 if (result == null)
                     return;
                 
-                string idOfQR = result.Text.Split("/")[5] ?? null;
-                if (idOfQR == null)
+                if (!Regex.IsMatch(result.Text, @"^https?://s\.team/q/\d+/\d+"))
                 {
                     MessageBox.Show("Can't get ID of QR code. You need to position your cursor at the center of the QR code on the Steam login page. If you have the same error again, this method might be deprecated.", "Wrong QR code.", MessageBoxButtons.OK, MessageBoxIcon.Error);
                     return;
                 }
 
-                bool success = await currentAccount.SignInViaQR(idOfQR);
+                if (currentAccount.Session.IsRefreshTokenExpired())
+                {
+                    MessageBox.Show("Your session has expired. Use the login again button under the selected account menu.", "Login via QR", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    return;
+                }
+
+                if (currentAccount.Session.IsAccessTokenExpired())
+                {
+                    try
+                    {
+                        await currentAccount.Session.RefreshAccessToken();
+                    }
+                    catch (Exception ex)
+                    {
+                        MessageBox.Show(ex.Message, "Login via QR Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                        return;
+                    }
+                }
+
+                bool success;
+                try
+                {
+                    success = await currentAccount.SignInViaQR(result.Text);
+                }
+                catch (Exception ex)
+                {
+                    MessageBox.Show(ex.Message, "Login via QR Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    return;
+                }
+
                 if (!success)
                     MessageBox.Show("Can't log in to account. Your authenticator is not valid or try again later.", "Something wen't wrong!", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
