@@ -28,11 +28,7 @@ namespace Steam_Desktop_Authenticator
         /// <returns></returns>
         public static string GetRandomSalt()
         {
-            byte[] salt = new byte[SALT_LENGTH];
-            using (RNGCryptoServiceProvider rng = new RNGCryptoServiceProvider())
-            {
-                rng.GetBytes(salt);
-            }
+            byte[] salt = RandomNumberGenerator.GetBytes(SALT_LENGTH);
             return Convert.ToBase64String(salt);
         }
 
@@ -42,11 +38,7 @@ namespace Steam_Desktop_Authenticator
         /// <returns></returns>
         public static string GetInitializationVector()
         {
-            byte[] IV = new byte[IV_LENGTH];
-            using (RNGCryptoServiceProvider rng = new RNGCryptoServiceProvider())
-            {
-                rng.GetBytes(IV);
-            }
+            byte[] IV = RandomNumberGenerator.GetBytes(IV_LENGTH);
             return Convert.ToBase64String(IV);
         }
 
@@ -69,7 +61,9 @@ namespace Steam_Desktop_Authenticator
             {
                 throw new ArgumentException("Salt is empty");
             }
-            using (Rfc2898DeriveBytes pbkdf2 = new Rfc2898DeriveBytes(password, Convert.FromBase64String(salt), PBKDF2_ITERATIONS))
+            // HashAlgorithmName.SHA1 matches the historical default of the 3-arg Rfc2898DeriveBytes
+            // constructor. Do not change this or existing encrypted .maFiles will fail to decrypt.
+            using (Rfc2898DeriveBytes pbkdf2 = new Rfc2898DeriveBytes(password, Convert.FromBase64String(salt), PBKDF2_ITERATIONS, HashAlgorithmName.SHA1))
             {
                 return pbkdf2.GetBytes(KEY_SIZE_BYTES);
             }
@@ -107,7 +101,7 @@ namespace Steam_Desktop_Authenticator
             byte[] key = GetEncryptionKey(password, passwordSalt);
             string plaintext = null;
 
-            using (RijndaelManaged aes256 = new RijndaelManaged())
+            using (Aes aes256 = Aes.Create())
             {
                 aes256.IV = Convert.FromBase64String(IV);
                 aes256.Key = key;
@@ -170,7 +164,7 @@ namespace Steam_Desktop_Authenticator
             byte[] key = GetEncryptionKey(password, passwordSalt);
             byte[] ciphertext;
 
-            using (RijndaelManaged aes256 = new RijndaelManaged())
+            using (Aes aes256 = Aes.Create())
             {
                 aes256.Key = key;
                 aes256.IV = Convert.FromBase64String(IV);
