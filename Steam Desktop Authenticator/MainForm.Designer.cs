@@ -45,6 +45,7 @@
             this.btnManageEncryption = new System.Windows.Forms.Button();
             this.groupAccount = new System.Windows.Forms.GroupBox();
             this.labelVersion = new System.Windows.Forms.Label();
+            this.labelUpdate = new System.Windows.Forms.LinkLabel();
             this.menuStrip = new System.Windows.Forms.MenuStrip();
             this.fileToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.menuImportAccount = new System.Windows.Forms.ToolStripMenuItem();
@@ -231,6 +232,22 @@
             this.labelVersion.TabIndex = 8;
             this.labelVersion.Text = "v0.0.0";
             this.labelVersion.TextAlign = System.Drawing.ContentAlignment.BottomRight;
+            // 
+            // labelUpdate
+            // 
+            this.labelUpdate.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
+            this.labelUpdate.BackColor = System.Drawing.Color.Transparent;
+            this.labelUpdate.Font = new System.Drawing.Font("Segoe UI", 6.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.labelUpdate.ForeColor = System.Drawing.SystemColors.ControlDarkDark;
+            this.labelUpdate.ImageAlign = System.Drawing.ContentAlignment.BottomRight;
+            this.labelUpdate.Location = new System.Drawing.Point(5, 441);
+            this.labelUpdate.Name = "labelUpdate";
+            this.labelUpdate.Size = new System.Drawing.Size(122, 14);
+            this.labelUpdate.TabIndex = 9;
+            this.labelUpdate.TabStop = true;
+            this.labelUpdate.Text = Strings.Get("MainForm_CheckForUpdates");
+            this.labelUpdate.TextAlign = System.Drawing.ContentAlignment.BottomLeft;
+            this.labelUpdate.LinkClicked += new System.Windows.Forms.LinkLabelLinkClickedEventHandler(this.labelUpdate_LinkClicked);
             // 
             // menuStrip
             // 
@@ -453,6 +470,7 @@
             this.Controls.Add(this.label1);
             this.Controls.Add(this.txtAccSearch);
             this.Controls.Add(this.lblStatus);
+            this.Controls.Add(this.labelUpdate);
             this.Controls.Add(this.labelVersion);
             this.Controls.Add(this.groupAccount);
             this.Controls.Add(this.listAccounts);
@@ -498,6 +516,7 @@
         private System.Windows.Forms.Button btnManageEncryption;
         private System.Windows.Forms.GroupBox groupAccount;
         private System.Windows.Forms.Label labelVersion;
+        private System.Windows.Forms.LinkLabel labelUpdate;
         private System.Windows.Forms.MenuStrip menuStrip;
         private System.Windows.Forms.ToolStripMenuItem fileToolStripMenuItem;
         private System.Windows.Forms.ToolStripSeparator toolStripSeparator1;

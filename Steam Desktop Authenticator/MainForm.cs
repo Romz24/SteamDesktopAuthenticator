@@ -103,6 +103,8 @@ namespace Steam_Desktop_Authenticator
             loadSettings();
             loadAccountsList();
 
+            checkForUpdates();
+
             if (startSilent)
             {
                 this.WindowState = FormWindowState.Minimized;
@@ -294,6 +296,18 @@ namespace Steam_Desktop_Authenticator
             {
                 passKey = manifest.PromptSetupPassKey();
                 this.loadAccountsList();
+            }
+        }
+
+        private void labelUpdate_LinkClicked(object sender, LinkLabelLinkClickedEventArgs e)
+        {
+            if (newVersion == null || currentVersion == null)
+            {
+                checkForUpdates();
+            }
+            else
+            {
+                compareVersions();
             }
         }
 
@@ -856,6 +870,89 @@ namespace Steam_Desktop_Authenticator
         {
             timerTradesPopup.Enabled = manifest.PeriodicChecking;
             timerTradesPopup.Interval = manifest.PeriodicCheckingInterval * 1000;
+        }
+
+        // Update checking
+
+        private const string UpdateCheckUrl = "https://api.github.com/repos/Romz24/SteamDesktopAuthenticator/releases/latest";
+
+        private Version newVersion = null;
+        private Version currentVersion = null;
+        private string updateDownloadUrl = null;
+        private bool updateCheckInProgress = false;
+        private bool startupUpdateCheck = true;
+
+        private async void checkForUpdates()
+        {
+            if (updateCheckInProgress) return;
+            updateCheckInProgress = true;
+
+            try
+            {
+                using var request = new HttpRequestMessage(HttpMethod.Get, UpdateCheckUrl);
+                request.Headers.UserAgent.ParseAdd("Steam Desktop Authenticator");
+
+                using var response = await _profileHttpClient.SendAsync(request);
+                response.EnsureSuccessStatusCode();
+                string json = await response.Content.ReadAsStringAsync();
+
+                var release = JsonConvert.DeserializeObject<GitHubRelease>(json);
+                newVersion = new Version(release.TagName.TrimStart('v'));
+                currentVersion = new Version(Application.ProductVersion);
+                updateDownloadUrl = release.Assets?.FirstOrDefault()?.BrowserDownloadUrl;
+
+                compareVersions();
+            }
+            catch (Exception)
+            {
+                if (!startupUpdateCheck)
+                {
+                    MessageBox.Show(Strings.Get("MainForm_UpdateCheckFailed"), Strings.Get("MainForm_UpdateCheckTitle"));
+                }
+                startupUpdateCheck = false;
+            }
+            finally
+            {
+                updateCheckInProgress = false;
+            }
+        }
+
+        private void compareVersions()
+        {
+            if (newVersion > currentVersion)
+            {
+                labelUpdate.Text = Strings.Get("MainForm_DownloadNewVersion");
+                DialogResult updateDialog = MessageBox.Show(
+                    string.Format(Strings.Get("MainForm_NewVersionAvailable"), Application.ProductVersion, newVersion),
+                    Strings.Get("MainForm_UpdateCheckTitle"), MessageBoxButtons.YesNo);
+
+                if (updateDialog == DialogResult.Yes && !string.IsNullOrEmpty(updateDownloadUrl))
+                {
+                    Process.Start(new ProcessStartInfo(updateDownloadUrl) { UseShellExecute = true });
+                }
+            }
+            else if (!startupUpdateCheck)
+            {
+                MessageBox.Show(string.Format(Strings.Get("MainForm_UsingLatestVersion"), Application.ProductVersion), Strings.Get("MainForm_UpdateCheckTitle"));
+            }
+
+            newVersion = null;
+            startupUpdateCheck = false;
+        }
+
+        private class GitHubRelease
+        {
+            [JsonProperty("tag_name")]
+            public string TagName { get; set; }
+
+            [JsonProperty("assets")]
+            public List<GitHubReleaseAsset> Assets { get; set; }
+        }
+
+        private class GitHubReleaseAsset
+        {
+            [JsonProperty("browser_download_url")]
+            public string BrowserDownloadUrl { get; set; }
         }
 
         private void MainForm_KeyDown(object sender, KeyEventArgs e)

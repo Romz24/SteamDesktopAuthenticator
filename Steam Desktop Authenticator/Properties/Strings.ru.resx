@@ -262,5 +262,12 @@ Steam Desktop Authenticator</value></data>
   <data name="MainForm_RefreshingSession" xml:space="preserve"><value>Обновление сессии...</value></data>
   <data name="MainForm_CheckingConfirmations" xml:space="preserve"><value>Проверка подтверждений...</value></data>
   <data name="MainForm_AccountNameFormat" xml:space="preserve"><value>Аккаунт: {0}</value></data>
+  <data name="MainForm_CheckForUpdates" xml:space="preserve"><value>Проверить обновления</value></data>
+  <data name="MainForm_DownloadNewVersion" xml:space="preserve"><value>Скачать новую версию</value></data>
+  <data name="MainForm_NewVersionAvailable" xml:space="preserve"><value>Доступна новая версия! Хотите скачать её сейчас?
+Вы обновитесь с версии {0} до {1}</value></data>
+  <data name="MainForm_UpdateCheckTitle" xml:space="preserve"><value>Проверка обновлений</value></data>
+  <data name="MainForm_UsingLatestVersion" xml:space="preserve"><value>Вы используете последнюю версию: {0}</value></data>
+  <data name="MainForm_UpdateCheckFailed" xml:space="preserve"><value>Не удалось проверить обновления.</value></data>
 
 </root>

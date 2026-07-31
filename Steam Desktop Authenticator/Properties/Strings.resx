@@ -262,5 +262,12 @@ No - Switch back to Email authentication.</value></data>
   <data name="MainForm_RefreshingSession" xml:space="preserve"><value>Refreshing session...</value></data>
   <data name="MainForm_CheckingConfirmations" xml:space="preserve"><value>Checking confirmations...</value></data>
   <data name="MainForm_AccountNameFormat" xml:space="preserve"><value>Account: {0}</value></data>
+  <data name="MainForm_CheckForUpdates" xml:space="preserve"><value>Check for updates</value></data>
+  <data name="MainForm_DownloadNewVersion" xml:space="preserve"><value>Download new version</value></data>
+  <data name="MainForm_NewVersionAvailable" xml:space="preserve"><value>A new version is available! Would you like to download it now?
+You will update from version {0} to {1}</value></data>
+  <data name="MainForm_UpdateCheckTitle" xml:space="preserve"><value>Check for Updates</value></data>
+  <data name="MainForm_UsingLatestVersion" xml:space="preserve"><value>You are using the latest version: {0}</value></data>
+  <data name="MainForm_UpdateCheckFailed" xml:space="preserve"><value>Failed to check for updates.</value></data>
 
 </root>
