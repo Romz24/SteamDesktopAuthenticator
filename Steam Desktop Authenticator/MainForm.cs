@@ -333,6 +333,13 @@ namespace Steam_Desktop_Authenticator
             this.PromptRefreshLogin(currentAccount);
         }
 
+        private void menuOpenSteamProfile_Click(object sender, EventArgs e)
+        {
+            if (currentAccount == null) return;
+
+            Process.Start(new ProcessStartInfo($"https://steamcommunity.com/profiles/{currentAccount.Session.SteamID}") { UseShellExecute = true });
+        }
+
         private void menuImportAccount_Click(object sender, EventArgs e)
         {
             ImportAccountForm currentImport_maFile_Form = new ImportAccountForm();

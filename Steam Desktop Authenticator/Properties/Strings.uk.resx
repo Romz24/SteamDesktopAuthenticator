@@ -217,6 +217,7 @@ Steam Desktop Authenticator</value></data>
   <data name="MainForm_MenuFile" xml:space="preserve"><value>Файл</value></data>
   <data name="MainForm_MenuSelectedAccount" xml:space="preserve"><value>Акаунт</value></data>
   <data name="MainForm_MenuLoginAgain" xml:space="preserve"><value>Увійти знову</value></data>
+  <data name="MainForm_MenuOpenSteamProfile" xml:space="preserve"><value>Відкрити профіль Steam</value></data>
   <data name="MainForm_MenuRemoveFromManifest" xml:space="preserve"><value>Видалити з маніфесту</value></data>
   <data name="MainForm_MenuDeactivateAuthenticator" xml:space="preserve"><value>Деактивувати автентифікатор</value></data>
   <data name="MainForm_TrayRestore" xml:space="preserve"><value>Розгорнути</value></data>

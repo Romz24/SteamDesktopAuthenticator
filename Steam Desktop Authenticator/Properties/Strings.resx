@@ -217,6 +217,7 @@ for confirmations</value></data>
   <data name="MainForm_MenuFile" xml:space="preserve"><value>File</value></data>
   <data name="MainForm_MenuSelectedAccount" xml:space="preserve"><value>Selected Account</value></data>
   <data name="MainForm_MenuLoginAgain" xml:space="preserve"><value>Login again</value></data>
+  <data name="MainForm_MenuOpenSteamProfile" xml:space="preserve"><value>Open Steam Profile</value></data>
   <data name="MainForm_MenuRemoveFromManifest" xml:space="preserve"><value>Remove from manifest</value></data>
   <data name="MainForm_MenuDeactivateAuthenticator" xml:space="preserve"><value>Deactivate Authenticator</value></data>
   <data name="MainForm_TrayRestore" xml:space="preserve"><value>Restore</value></data>

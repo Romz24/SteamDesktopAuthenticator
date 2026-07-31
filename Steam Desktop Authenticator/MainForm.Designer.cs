@@ -53,6 +53,7 @@
             this.menuQuit = new System.Windows.Forms.ToolStripMenuItem();
             this.accountToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.menuLoginAgain = new System.Windows.Forms.ToolStripMenuItem();
+            this.menuOpenSteamProfile = new System.Windows.Forms.ToolStripMenuItem();
             this.toolStripSeparator4 = new System.Windows.Forms.ToolStripSeparator();
             this.menuRemoveAccountFromManifest = new System.Windows.Forms.ToolStripMenuItem();
             this.menuDeactivateAuthenticator = new System.Windows.Forms.ToolStripMenuItem();
@@ -284,6 +285,7 @@
             // 
             this.accountToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.menuLoginAgain,
+            this.menuOpenSteamProfile,
             this.toolStripSeparator4,
             this.menuRemoveAccountFromManifest,
             this.menuDeactivateAuthenticator});
@@ -298,6 +300,13 @@
             this.menuLoginAgain.Text = Strings.Get("MainForm_MenuLoginAgain");
             this.menuLoginAgain.Click += new System.EventHandler(this.menuLoginAgain_Click);
             // 
+            // menuOpenSteamProfile
+            //
+            this.menuOpenSteamProfile.Name = "menuOpenSteamProfile";
+            this.menuOpenSteamProfile.Size = new System.Drawing.Size(205, 22);
+            this.menuOpenSteamProfile.Text = Strings.Get("MainForm_MenuOpenSteamProfile");
+            this.menuOpenSteamProfile.Click += new System.EventHandler(this.menuOpenSteamProfile_Click);
+            //
             // toolStripSeparator4
             // 
             this.toolStripSeparator4.Name = "toolStripSeparator4";
@@ -496,6 +505,7 @@
         private System.Windows.Forms.ToolStripMenuItem accountToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem menuRemoveAccountFromManifest;
         private System.Windows.Forms.ToolStripMenuItem menuLoginAgain;
+        private System.Windows.Forms.ToolStripMenuItem menuOpenSteamProfile;
         private System.Windows.Forms.NotifyIcon trayIcon;
         private System.Windows.Forms.ContextMenuStrip menuStripTray;
         private System.Windows.Forms.ToolStripMenuItem trayRestore;
