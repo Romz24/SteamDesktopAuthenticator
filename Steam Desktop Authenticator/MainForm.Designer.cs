@@ -87,8 +87,7 @@
             // 
             // groupBox1
             // 
-            this.groupBox1.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
-            | System.Windows.Forms.AnchorStyles.Right)));
+            this.groupBox1.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) | System.Windows.Forms.AnchorStyles.Right)));
             this.groupBox1.Controls.Add(this.btnCopy);
             this.groupBox1.Controls.Add(this.pbTimeout);
             this.groupBox1.Controls.Add(this.txtLoginToken);
@@ -102,9 +101,9 @@
             // btnCopy
             // 
             this.btnCopy.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.btnCopy.Location = new System.Drawing.Point(250, 19);
+            this.btnCopy.Location = new System.Drawing.Point(192, 19);
             this.btnCopy.Name = "btnCopy";
-            this.btnCopy.Size = new System.Drawing.Size(54, 35);
+            this.btnCopy.Size = new System.Drawing.Size(112, 35);
             this.btnCopy.TabIndex = 2;
             this.btnCopy.Text = "Copy";
             this.btnCopy.UseVisualStyleBackColor = true;
@@ -130,7 +129,7 @@
             this.txtLoginToken.Location = new System.Drawing.Point(6, 19);
             this.txtLoginToken.Name = "txtLoginToken";
             this.txtLoginToken.ReadOnly = true;
-            this.txtLoginToken.Size = new System.Drawing.Size(238, 35);
+            this.txtLoginToken.Size = new System.Drawing.Size(180, 35);
             this.txtLoginToken.TabIndex = 0;
             this.txtLoginToken.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
             // 
@@ -155,7 +154,6 @@
             // 
             // btnTradeConfirmations
             // 
-            this.btnTradeConfirmations.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Left | System.Windows.Forms.AnchorStyles.Right)));
             this.btnTradeConfirmations.Enabled = false;
             this.btnTradeConfirmations.Location = new System.Drawing.Point(6, 19);
             this.btnTradeConfirmations.Name = "btnTradeConfirmations";
@@ -167,7 +165,7 @@
             // 
             // btnLoginViaQr
             // 
-            this.btnLoginViaQr.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Left | System.Windows.Forms.AnchorStyles.Right)));
+            this.btnLoginViaQr.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.btnLoginViaQr.Enabled = false;
             this.btnLoginViaQr.Location = new System.Drawing.Point(159, 19);
             this.btnLoginViaQr.Name = "btnLoginViaQr";
@@ -190,8 +188,7 @@
             // 
             // groupAccount
             // 
-            this.groupAccount.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
-            | System.Windows.Forms.AnchorStyles.Right)));
+            this.groupAccount.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) | System.Windows.Forms.AnchorStyles.Right)));
             this.groupAccount.Controls.Add(this.btnTradeConfirmations);
             this.groupAccount.Controls.Add(this.btnLoginViaQr);
             this.groupAccount.Location = new System.Drawing.Point(12, 155);
@@ -390,9 +387,9 @@
             // 
             this.txtAccSearch.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
-            this.txtAccSearch.Location = new System.Drawing.Point(49, 411);
+            this.txtAccSearch.Location = new System.Drawing.Point(65, 411);
             this.txtAccSearch.Name = "txtAccSearch";
-            this.txtAccSearch.Size = new System.Drawing.Size(273, 22);
+            this.txtAccSearch.Size = new System.Drawing.Size(257, 22);
             this.txtAccSearch.TabIndex = 12;
             this.txtAccSearch.TextChanged += new System.EventHandler(this.txtAccSearch_TextChanged);
             // 
