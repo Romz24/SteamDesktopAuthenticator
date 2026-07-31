@@ -272,7 +272,7 @@ namespace Steam_Desktop_Authenticator
 
                 if (newPassKey != confirmPassKey)
                 {
-                    MessageBox.Show(Strings.Get("Common_PasskeysDoNotMatch"));
+                    MessageBox.Show(Strings.Get("Common_PasskeysDoNotMatch"), Strings.Get("MainForm_ManageEncryption"));
                     return;
                 }
 
@@ -284,11 +284,11 @@ namespace Steam_Desktop_Authenticator
                 bool removing = newPassKey == null;
                 if (!manifest.ChangeEncryptionKey(curPassKey, newPassKey))
                 {
-                    MessageBox.Show(Strings.Get(removing ? "MainForm_UnableToRemovePasskey" : "MainForm_UnableToChangePasskey"));
+                    MessageBox.Show(Strings.Get(removing ? "MainForm_UnableToRemovePasskey" : "MainForm_UnableToChangePasskey"), Strings.Get("MainForm_ManageEncryption"));
                 }
                 else
                 {
-                    MessageBox.Show(Strings.Get(removing ? "MainForm_PasskeyRemoved" : "MainForm_PasskeyChanged"));
+                    MessageBox.Show(Strings.Get(removing ? "MainForm_PasskeyRemoved" : "MainForm_PasskeyChanged"), Strings.Get("MainForm_ManageEncryption"));
                     this.loadAccountsList();
                 }
             }
@@ -422,25 +422,25 @@ namespace Steam_Desktop_Authenticator
                 string enteredCode = confirmationDialog.txtBox.Text.ToUpper();
                 if (enteredCode != confCode)
                 {
-                    MessageBox.Show(Strings.Get("MainForm_ConfCodesDontMatch"));
+                    MessageBox.Show(Strings.Get("MainForm_ConfCodesDontMatch"), Strings.Get("MainForm_MenuDeactivateAuthenticator"));
                     return;
                 }
 
                 bool success = await currentAccount.DeactivateAuthenticator(scheme);
                 if (success)
                 {
-                    MessageBox.Show(Strings.Get(scheme == 2 ? "MainForm_SteamGuardRemovedCompletely" : "MainForm_SteamGuardSwitchedEmail"));
+                    MessageBox.Show(Strings.Get(scheme == 2 ? "MainForm_SteamGuardRemovedCompletely" : "MainForm_SteamGuardSwitchedEmail"), Strings.Get("MainForm_MenuDeactivateAuthenticator"));
                     this.manifest.RemoveAccount(currentAccount);
                     this.loadAccountsList();
                 }
                 else
                 {
-                    MessageBox.Show(Strings.Get("MainForm_DeactivateFailed"));
+                    MessageBox.Show(Strings.Get("MainForm_DeactivateFailed"), Strings.Get("MainForm_MenuDeactivateAuthenticator"));
                 }
             }
             else
             {
-                MessageBox.Show(Strings.Get("MainForm_DeactivateNoAction"));
+                MessageBox.Show(Strings.Get("MainForm_DeactivateNoAction"), Strings.Get("MainForm_MenuDeactivateAuthenticator"));
             }
         }
 

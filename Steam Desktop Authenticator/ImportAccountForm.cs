@@ -38,7 +38,7 @@ namespace Steam_Desktop_Authenticator
                 bool AppManifestData_encrypted = AppManifestData.Encrypted;
                 if (AppManifestData_encrypted == true)
                 {
-                    MessageBox.Show(Strings.Get("ImportAccountForm_ExistingEncrypted"));
+                    MessageBox.Show(Strings.Get("ImportAccountForm_ExistingEncrypted"), Strings.Get("ImportAccountForm_DialogTitle"));
                     this.Close();
                 }
                 else if (AppManifestData_encrypted == false)
@@ -47,13 +47,13 @@ namespace Steam_Desktop_Authenticator
                 }
                 else
                 {
-                    MessageBox.Show(Strings.Get("ImportAccountForm_InvalidEncryptedValue"));
+                    MessageBox.Show(Strings.Get("ImportAccountForm_InvalidEncryptedValue"), Strings.Get("ImportAccountForm_DialogTitle"));
                     this.Close();
                 }
             }
             else
             {
-                MessageBox.Show(Strings.Get("ImportAccountForm_GenericRestart"));
+                MessageBox.Show(Strings.Get("ImportAccountForm_GenericRestart"), Strings.Get("ImportAccountForm_DialogTitle"));
             }
             #endregion
 
@@ -176,7 +176,7 @@ namespace Steam_Desktop_Authenticator
                                 catch (Exception)
                                 {
                                     ReadManifestEx = "1";
-                                    MessageBox.Show(Strings.Get("ImportAccountForm_InvalidManifestContent"));
+                                    MessageBox.Show(Strings.Get("ImportAccountForm_InvalidManifestContent"), Strings.Get("ImportAccountForm_DialogTitle"));
                                 }
 
 
@@ -191,7 +191,7 @@ namespace Steam_Desktop_Authenticator
 
                                         if (decryptedText == null)
                                         {
-                                            MessageBox.Show(Strings.Get("ImportAccountForm_DecryptionFailed"));
+                                            MessageBox.Show(Strings.Get("ImportAccountForm_DecryptionFailed"), Strings.Get("ImportAccountForm_DialogTitle"));
                                         }
                                         else
                                         {
@@ -223,21 +223,21 @@ namespace Steam_Desktop_Authenticator
                                     {
                                         if (ImportFileName_Found == "0")
                                         {
-                                            MessageBox.Show(Strings.Get("ImportAccountForm_AccountNotFound"));
+                                            MessageBox.Show(Strings.Get("ImportAccountForm_AccountNotFound"), Strings.Get("ImportAccountForm_DialogTitle"));
                                         }
                                         else if (Salt_Found == null && IV_Found == null)
                                         {
-                                            MessageBox.Show(Strings.Get("ImportAccountForm_NoEncryptedData"));
+                                            MessageBox.Show(Strings.Get("ImportAccountForm_NoEncryptedData"), Strings.Get("ImportAccountForm_DialogTitle"));
                                         }
                                         else
                                         {
                                             if (IV_Found == null)
                                             {
-                                                MessageBox.Show(Strings.Get("ImportAccountForm_MissingIV"));
+                                                MessageBox.Show(Strings.Get("ImportAccountForm_MissingIV"), Strings.Get("ImportAccountForm_DialogTitle"));
                                             }
                                             else if (IV_Found == null)
                                             {
-                                                MessageBox.Show(Strings.Get("ImportAccountForm_MissingSalt"));
+                                                MessageBox.Show(Strings.Get("ImportAccountForm_MissingSalt"), Strings.Get("ImportAccountForm_DialogTitle"));
                                             }
                                         }
                                     }
@@ -248,7 +248,7 @@ namespace Steam_Desktop_Authenticator
                             }
                             else
                             {
-                                MessageBox.Show(Strings.Get("ImportAccountForm_ManifestMissing"));
+                                MessageBox.Show(Strings.Get("ImportAccountForm_ManifestMissing"), Strings.Get("ImportAccountForm_DialogTitle"));
                             }
                             #endregion //Import Encripted maFile END
                         }
@@ -256,7 +256,7 @@ namespace Steam_Desktop_Authenticator
                     }
                     catch (Exception)
                     {
-                        MessageBox.Show(Strings.Get("ImportAccountForm_InvalidMaFile"));
+                        MessageBox.Show(Strings.Get("ImportAccountForm_InvalidMaFile"), Strings.Get("ImportAccountForm_DialogTitle"));
                     }
                 }
             }

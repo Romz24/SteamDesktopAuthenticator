@@ -236,7 +236,7 @@ namespace Steam_Desktop_Authenticator
                         passKeyValid = manifest.VerifyPasskey(passKey);
                         if (!passKeyValid)
                         {
-                            MessageBox.Show(Strings.Get("Common_PasskeyInvalidSameAccounts"));
+                            MessageBox.Show(Strings.Get("Common_PasskeyInvalidSameAccounts"), Strings.Get("Common_SteamLoginTitle"));
                         }
                     }
                     else
@@ -251,12 +251,12 @@ namespace Steam_Desktop_Authenticator
             if (!manifest.SaveAccount(linker.LinkedAccount, passKey != null, passKey))
             {
                 manifest.RemoveAccount(linker.LinkedAccount);
-                MessageBox.Show(Strings.Get("LoginForm_UnableToSaveMaFile"));
+                MessageBox.Show(Strings.Get("LoginForm_UnableToSaveMaFile"), Strings.Get("Common_SteamLoginErrorTitle"));
                 this.Close();
                 return;
             }
 
-            MessageBox.Show(Strings.Get("LoginForm_NotYetLinkedPrefix") + linker.LinkedAccount.RevocationCode);
+            MessageBox.Show(Strings.Get("LoginForm_NotYetLinkedPrefix") + linker.LinkedAccount.RevocationCode, Strings.Get("Common_SteamLoginTitle"));
 
             AuthenticatorLinker.FinalizeResult finalizeResponse = AuthenticatorLinker.FinalizeResult.GeneralFailure;
             while (finalizeResponse != AuthenticatorLinker.FinalizeResult.Success)
@@ -274,7 +274,7 @@ namespace Steam_Desktop_Authenticator
                 confirmRevocationCode.ShowDialog();
                 if (confirmRevocationCode.txtBox.Text.ToUpper() != linker.LinkedAccount.RevocationCode)
                 {
-                    MessageBox.Show(Strings.Get("LoginForm_RevocationIncorrect"));
+                    MessageBox.Show(Strings.Get("LoginForm_RevocationIncorrect"), Strings.Get("Common_SteamLoginErrorTitle"));
                     manifest.RemoveAccount(linker.LinkedAccount);
                     this.Close();
                     return;
@@ -289,13 +289,13 @@ namespace Steam_Desktop_Authenticator
                         continue;
 
                     case AuthenticatorLinker.FinalizeResult.UnableToGenerateCorrectCodes:
-                        MessageBox.Show(Strings.Get("LoginForm_UnableToGenerateCodesPrefix") + linker.LinkedAccount.RevocationCode);
+                        MessageBox.Show(Strings.Get("LoginForm_UnableToGenerateCodesPrefix") + linker.LinkedAccount.RevocationCode, Strings.Get("Common_SteamLoginErrorTitle"));
                         manifest.RemoveAccount(linker.LinkedAccount);
                         this.Close();
                         return;
 
                     case AuthenticatorLinker.FinalizeResult.GeneralFailure:
-                        MessageBox.Show(Strings.Get("LoginForm_UnableToFinalizePrefix") + linker.LinkedAccount.RevocationCode);
+                        MessageBox.Show(Strings.Get("LoginForm_UnableToFinalizePrefix") + linker.LinkedAccount.RevocationCode, Strings.Get("Common_SteamLoginErrorTitle"));
                         manifest.RemoveAccount(linker.LinkedAccount);
                         this.Close();
                         return;
@@ -304,7 +304,7 @@ namespace Steam_Desktop_Authenticator
 
             //Linked, finally. Re-save with FullyEnrolled property.
             manifest.SaveAccount(linker.LinkedAccount, passKey != null, passKey);
-            MessageBox.Show(Strings.Get("Common_AuthenticatorLinkedPrefix") + linker.LinkedAccount.RevocationCode);
+            MessageBox.Show(Strings.Get("Common_AuthenticatorLinkedPrefix") + linker.LinkedAccount.RevocationCode, Strings.Get("Common_SteamLoginTitle"));
             this.Close();
         }
 

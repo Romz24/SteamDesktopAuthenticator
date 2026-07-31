@@ -58,7 +58,7 @@ namespace Steam_Desktop_Authenticator
             // run the program only once
             if (PriorProcess() != null)
             {
-                MessageBox.Show(Strings.Get("Program_AlreadyRunning"));
+                MessageBox.Show(Strings.Get("Program_AlreadyRunning"), Strings.Get("App_Title"));
                 return;
             }
 

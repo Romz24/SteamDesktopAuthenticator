@@ -188,7 +188,7 @@ namespace Steam_Desktop_Authenticator
                     passKeyValid = this.VerifyPasskey(passKey);
                     if (!passKeyValid)
                     {
-                        MessageBox.Show(Strings.Get("Common_PasskeyInvalid"));
+                        MessageBox.Show(Strings.Get("Common_PasskeyInvalid"), Strings.Get("MainForm_ManageEncryption"));
                     }
                 }
                 else
@@ -205,7 +205,7 @@ namespace Steam_Desktop_Authenticator
             newPassKeyForm.ShowDialog();
             if (newPassKeyForm.Canceled || newPassKeyForm.txtBox.Text.Length == 0)
             {
-                MessageBox.Show(Strings.Get("Common_NoEncryptionWarning"));
+                MessageBox.Show(Strings.Get("Common_NoEncryptionWarning"), Strings.Get("MainForm_ManageEncryption"));
                 return null;
             }
 
@@ -213,7 +213,7 @@ namespace Steam_Desktop_Authenticator
             newPassKeyForm2.ShowDialog();
             if (newPassKeyForm2.Canceled)
             {
-                MessageBox.Show(Strings.Get("Common_NoEncryptionWarning"));
+                MessageBox.Show(Strings.Get("Common_NoEncryptionWarning"), Strings.Get("MainForm_ManageEncryption"));
                 return null;
             }
 
@@ -222,18 +222,18 @@ namespace Steam_Desktop_Authenticator
 
             if (newPassKey != confirmPassKey)
             {
-                MessageBox.Show(Strings.Get("Common_PasskeysDoNotMatch"));
+                MessageBox.Show(Strings.Get("Common_PasskeysDoNotMatch"), Strings.Get("MainForm_ManageEncryption"));
                 return null;
             }
 
             if (!this.ChangeEncryptionKey(null, newPassKey))
             {
-                MessageBox.Show(Strings.Get("Manifest_UnableToSetPasskey"));
+                MessageBox.Show(Strings.Get("Manifest_UnableToSetPasskey"), Strings.Get("MainForm_ManageEncryption"));
                 return null;
             }
             else
             {
-                MessageBox.Show(Strings.Get("Manifest_PasskeySuccessfullySet"));
+                MessageBox.Show(Strings.Get("Manifest_PasskeySuccessfullySet"), Strings.Get("MainForm_ManageEncryption"));
             }
 
             return newPassKey;

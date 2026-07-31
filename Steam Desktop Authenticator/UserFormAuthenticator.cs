@@ -27,7 +27,7 @@ namespace Steam_Desktop_Authenticator
             {
                 // After 2 tries tell the user that there seems to be an issue
                 if (deviceCodesGenerated > 2)
-                    MessageBox.Show(Strings.Get("UserFormAuthenticator_TwoFactorIssue"));
+                    MessageBox.Show(Strings.Get("UserFormAuthenticator_TwoFactorIssue"), Strings.Get("Common_SteamLoginTitle"));
 
                 await Task.Delay(30000);
             }
