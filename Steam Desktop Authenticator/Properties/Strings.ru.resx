@@ -1,0 +1,263 @@
+<?xml version="1.0" encoding="utf-8"?>
+<root>
+  <xsd:schema id="root" xmlns="" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:msdata="urn:schemas-microsoft-com:xml-msdata">
+    <xsd:import namespace="http://www.w3.org/XML/1998/namespace" />
+    <xsd:element name="root" msdata:IsDataSet="true">
+      <xsd:complexType>
+        <xsd:choice maxOccurs="unbounded">
+          <xsd:element name="metadata">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" />
+              </xsd:sequence>
+              <xsd:attribute name="name" use="required" type="xsd:string" />
+              <xsd:attribute name="type" type="xsd:string" />
+              <xsd:attribute name="mimetype" type="xsd:string" />
+              <xsd:attribute ref="xml:space" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="assembly">
+            <xsd:complexType>
+              <xsd:attribute name="alias" type="xsd:string" />
+              <xsd:attribute name="name" type="xsd:string" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="data">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" msdata:Ordinal="1" />
+                <xsd:element name="comment" type="xsd:string" minOccurs="0" msdata:Ordinal="2" />
+              </xsd:sequence>
+              <xsd:attribute name="name" type="xsd:string" use="required" msdata:Ordinal="1" />
+              <xsd:attribute name="type" type="xsd:string" msdata:Ordinal="3" />
+              <xsd:attribute name="mimetype" type="xsd:string" msdata:Ordinal="4" />
+              <xsd:attribute ref="xml:space" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="resheader">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" msdata:Ordinal="1" />
+              </xsd:sequence>
+              <xsd:attribute name="name" type="xsd:string" use="required" />
+            </xsd:complexType>
+          </xsd:element>
+        </xsd:choice>
+      </xsd:complexType>
+    </xsd:element>
+  </xsd:schema>
+  <resheader name="resmimetype">
+    <value>text/microsoft-resx</value>
+  </resheader>
+  <resheader name="version">
+    <value>2.0</value>
+  </resheader>
+  <resheader name="reader">
+    <value>System.Resources.ResXResourceReader, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </resheader>
+  <resheader name="writer">
+    <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </resheader>
+
+  <data name="App_Title" xml:space="preserve"><value>Steam Desktop Authenticator</value></data>
+
+  <data name="Common_Accept" xml:space="preserve"><value>Принять</value></data>
+  <data name="Common_Cancel" xml:space="preserve"><value>Отмена</value></data>
+  <data name="Common_Submit" xml:space="preserve"><value>Отправить</value></data>
+  <data name="Common_Save" xml:space="preserve"><value>Сохранить</value></data>
+  <data name="Common_Login" xml:space="preserve"><value>Войти</value></data>
+  <data name="Common_LoggingIn" xml:space="preserve"><value>Выполняется вход...</value></data>
+  <data name="Common_Refresh" xml:space="preserve"><value>Обновить</value></data>
+  <data name="Common_Refreshing" xml:space="preserve"><value>Обновление...</value></data>
+  <data name="Common_Loading" xml:space="preserve"><value>Загрузка...</value></data>
+  <data name="Common_Deny" xml:space="preserve"><value>Отклонить</value></data>
+  <data name="Common_Error" xml:space="preserve"><value>Ошибка</value></data>
+  <data name="Common_Warning" xml:space="preserve"><value>Предупреждение!</value></data>
+  <data name="Common_Quit" xml:space="preserve"><value>Выход</value></data>
+  <data name="Common_Copy" xml:space="preserve"><value>Копировать</value></data>
+  <data name="Common_SteamLoginTitle" xml:space="preserve"><value>Вход в Steam</value></data>
+  <data name="Common_SteamLoginErrorTitle" xml:space="preserve"><value>Ошибка входа в Steam</value></data>
+  <data name="Common_SessionExpired" xml:space="preserve"><value>Ваша сессия истекла. Используйте кнопку «Войти снова» в меню выбранного аккаунта.</value></data>
+  <data name="Common_AuthenticatorAlreadyLinked" xml:space="preserve"><value>К этому аккаунту уже привязан аутентификатор. Чтобы использовать SDA в качестве аутентификатора, сначала удалите текущий.</value></data>
+  <data name="Common_SettingsCorrupted" xml:space="preserve"><value>Ваши настройки были повреждены и сброшены к значениям по умолчанию.</value></data>
+  <data name="Common_UnrecoverableEncrypted" xml:space="preserve"><value>К сожалению, SDA не удалось восстановить ваши аккаунты, так как они были зашифрованы.
+Вам нужно восстановить доступ к аккаунтам Steam, удалив аутентификатор.
+Нажмите ОК, чтобы посмотреть инструкцию.</value></data>
+  <data name="Common_EnterEncryptionPasskeyPrompt" xml:space="preserve"><value>Введите пароль шифрования. Оставьте пустым или нажмите «Отмена», чтобы не шифровать (ОЧЕНЬ НЕБЕЗОПАСНО).</value></data>
+  <data name="Common_EnterCurrentPasskeyPrompt" xml:space="preserve"><value>Введите текущий пароль шифрования.</value></data>
+  <data name="Common_PasskeyInvalid" xml:space="preserve"><value>Неверный пароль.</value></data>
+  <data name="Common_PasskeyInvalidSameAccounts" xml:space="preserve"><value>Неверный пароль. Введите тот же пароль, что используется для других ваших аккаунтов.</value></data>
+  <data name="Common_EnterPasskeyOrCancelPrompt" xml:space="preserve"><value>Введите пароль или нажмите «Отмена», чтобы оставить без шифрования.</value></data>
+  <data name="Common_NoEncryptionWarning" xml:space="preserve"><value>ВНИМАНИЕ: вы решили не шифровать файлы. Это создаёт риск для вашей безопасности. Если злоумышленник получит доступ к вашему компьютеру, он сможет полностью заблокировать вам доступ к аккаунту и украсть все ваши предметы.</value></data>
+  <data name="Common_ConfirmNewPasskeyPrompt" xml:space="preserve"><value>Подтвердите новый пароль.</value></data>
+  <data name="Common_PasskeysDoNotMatch" xml:space="preserve"><value>Пароли не совпадают.</value></data>
+  <data name="Common_EnterEncryptionPasskeySimplePrompt" xml:space="preserve"><value>Введите пароль шифрования.</value></data>
+  <data name="Common_AuthenticatorLinkedPrefix" xml:space="preserve"><value>Мобильный аутентификатор успешно привязан. Запишите код отзыва: </value></data>
+  <data name="Common_ImportAccount" xml:space="preserve"><value>Импорт аккаунта</value></data>
+
+  <data name="ListInputForm_Title" xml:space="preserve"><value>Выберите один вариант</value></data>
+
+  <data name="PhoneInputForm_Title" xml:space="preserve"><value>Добавление номера телефона</value></data>
+  <data name="PhoneInputForm_Explanation" xml:space="preserve"><value>Для добавления мобильного аутентификатора аккаунту Steam нужен номер телефона.
+Этот номер должен уметь принимать SMS.
+VoIP и виртуальные номера не поддерживаются.</value></data>
+  <data name="PhoneInputForm_CountryCodeLabel" xml:space="preserve"><value>Двухбуквенный код страны номера телефона:</value></data>
+  <data name="PhoneInputForm_PhoneNumberLabel" xml:space="preserve"><value>Номер телефона: (+1 0000000000)</value></data>
+  <data name="PhoneInputForm_MustStartWithPlus" xml:space="preserve"><value>Номер телефона должен начинаться с + и кода страны.</value></data>
+
+  <data name="CaptchaForm_Prompt" xml:space="preserve"><value>Введите код с картинки:</value></data>
+
+  <data name="TradePopupForm_Title" xml:space="preserve"><value>Новое подтверждение</value></data>
+  <data name="TradePopupForm_PressAcceptAgain" xml:space="preserve"><value>Нажмите «Принять» ещё раз для подтверждения</value></data>
+  <data name="TradePopupForm_Accepting" xml:space="preserve"><value>Принятие...</value></data>
+  <data name="TradePopupForm_PressDenyAgain" xml:space="preserve"><value>Нажмите «Отклонить» ещё раз для подтверждения</value></data>
+  <data name="TradePopupForm_Denying" xml:space="preserve"><value>Отклонение...</value></data>
+  <data name="TradePopupForm_ConfirmationLabel" xml:space="preserve"><value>Подтверждение</value></data>
+
+  <data name="ConfirmationFormWeb_TitleFormat" xml:space="preserve"><value>Подтверждения обмена - {0}</value></data>
+  <data name="ConfirmationFormWeb_Title" xml:space="preserve"><value>Подтверждения обмена</value></data>
+  <data name="ConfirmationFormWeb_NothingToConfirm" xml:space="preserve"><value>Нечего подтверждать или отклонять</value></data>
+  <data name="ConfirmationFormWeb_SomethingWentWrong" xml:space="preserve"><value>Что-то пошло не так:
+</value></data>
+
+  <data name="UserFormAuthenticator_TwoFactorIssue" xml:space="preserve"><value>Похоже, возникла проблема со входом в аккаунт с этими кодами двухфакторной аутентификации. Вы уверены, что SDA всё ещё ваш аутентификатор?</value></data>
+  <data name="UserFormAuthenticator_EmailCodePrompt" xml:space="preserve"><value>Введите код, отправленный на вашу почту:</value></data>
+  <data name="UserFormAuthenticator_EmailCodeInvalidPrompt" xml:space="preserve"><value>Введённый код неверен. Введите код, отправленный на вашу почту:</value></data>
+
+  <data name="ImportAccountForm_Title" xml:space="preserve"><value>Импорт аккаунта</value></data>
+  <data name="ImportAccountForm_DialogTitle" xml:space="preserve"><value>Импорт аккаунта</value></data>
+  <data name="ImportAccountForm_PasskeyLabel" xml:space="preserve"><value>Введите пароль шифрования, если ваш .maFile зашифрован:</value></data>
+  <data name="ImportAccountForm_SelectButton" xml:space="preserve"><value>Выбрать файл .maFile для импорта</value></data>
+  <data name="ImportAccountForm_ManifestNote" xml:space="preserve"><value>Если вы импортируете зашифрованный .maFile, файл манифеста должен находиться рядом с ним.</value></data>
+  <data name="ImportAccountForm_ExistingEncrypted" xml:space="preserve"><value>Невозможно импортировать .maFile, так как существующий аккаунт в приложении зашифрован.
+Расшифруйте его и попробуйте снова.</value></data>
+  <data name="ImportAccountForm_InvalidEncryptedValue" xml:space="preserve"><value>недопустимое значение переменной 'encrypted' в manifest.json</value></data>
+  <data name="ImportAccountForm_GenericRestart" xml:space="preserve"><value>Произошла ошибка, перезапустите программу!</value></data>
+  <data name="ImportAccountForm_LoginFailed" xml:space="preserve"><value>Вход не выполнен. Попробуйте импортировать этот аккаунт снова.</value></data>
+  <data name="ImportAccountForm_Imported" xml:space="preserve"><value>Аккаунт импортирован!</value></data>
+  <data name="ImportAccountForm_InvalidManifestContent" xml:space="preserve"><value>Некорректное содержимое manifest.json!
+Импорт не удался.</value></data>
+  <data name="ImportAccountForm_DecryptionFailed" xml:space="preserve"><value>Не удалось расшифровать.
+Импорт не удался.</value></data>
+  <data name="ImportAccountForm_ImportedDecrypted" xml:space="preserve"><value>Аккаунт импортирован!
+Ваш аккаунт теперь расшифрован!</value></data>
+  <data name="ImportAccountForm_AccountNotFound" xml:space="preserve"><value>Аккаунт не найден в manifest.json.
+Импорт не удался.</value></data>
+  <data name="ImportAccountForm_NoEncryptedData" xml:space="preserve"><value>manifest.json не содержит зашифрованных данных.
+Возможно, ваш аккаунт не зашифрован!
+Импорт не удался.</value></data>
+  <data name="ImportAccountForm_MissingIV" xml:space="preserve"><value>В manifest.json отсутствует: encryption_iv
+Импорт не удался.</value></data>
+  <data name="ImportAccountForm_MissingSalt" xml:space="preserve"><value>В manifest.json отсутствует: encryption_salt
+Импорт не удался.</value></data>
+  <data name="ImportAccountForm_ManifestMissing" xml:space="preserve"><value>Отсутствует manifest.json!
+Импорт не удался.</value></data>
+  <data name="ImportAccountForm_InvalidMaFile" xml:space="preserve"><value>Этот файл не является корректным maFile SteamAuth.
+Импорт не удался.</value></data>
+
+  <data name="WelcomeForm_Welcome" xml:space="preserve"><value>Добро пожаловать в
+Steam Desktop Authenticator</value></data>
+  <data name="WelcomeForm_ImportButton" xml:space="preserve"><value>У меня уже настроен Steam Desktop Authenticator в другом месте на этом ПК, и я хочу импортировать оттуда аккаунт(ы).
+</value></data>
+  <data name="WelcomeForm_SelectItem" xml:space="preserve"><value>Выберите пункт, чтобы начать:</value></data>
+  <data name="WelcomeForm_FirstTimeButton" xml:space="preserve"><value>Это мой первый раз, и
+я просто хочу войти в свой аккаунт(ы) Steam.</value></data>
+  <data name="WelcomeForm_SelectFolderDescription" xml:space="preserve"><value>Выберите папку со старой установкой Steam Desktop Authenticator</value></data>
+  <data name="WelcomeForm_FolderInvalid" xml:space="preserve"><value>В этой папке нет ни manifest.json, ни папки maFiles.
+Выберите папку, где был установлен Steam Desktop Authenticator.</value></data>
+  <data name="WelcomeForm_ImportedAll" xml:space="preserve"><value>Все аккаунты и настройки импортированы! Нажмите ОК, чтобы продолжить.</value></data>
+  <data name="WelcomeForm_ImportAccountsTitle" xml:space="preserve"><value>Импорт аккаунтов</value></data>
+
+  <data name="SettingsForm_Title" xml:space="preserve"><value>Настройки</value></data>
+  <data name="SettingsForm_PeriodicChecking" xml:space="preserve"><value>Периодически проверять новые подтверждения и показывать всплывающее окно при их появлении</value></data>
+  <data name="SettingsForm_SecondsBetween" xml:space="preserve"><value>Секунд между проверками
+подтверждений</value></data>
+  <data name="SettingsForm_CheckAll" xml:space="preserve"><value>Проверять подтверждения для всех аккаунтов</value></data>
+  <data name="SettingsForm_AutoConfirmMarket" xml:space="preserve"><value>Автоматически подтверждать операции торговой площадки</value></data>
+  <data name="SettingsForm_AutoConfirmTrades" xml:space="preserve"><value>Автоматически подтверждать обмены</value></data>
+  <data name="SettingsForm_SecurityWarning" xml:space="preserve"><value>Внимание: включение этой опции значительно снижает безопасность ваших предметов! Используется на ваш страх и риск. Продолжить?</value></data>
+  <data name="SettingsForm_Language" xml:space="preserve"><value>Язык:</value></data>
+  <data name="SettingsForm_RestartRequired" xml:space="preserve"><value>Перезапустите Steam Desktop Authenticator, чтобы изменение языка вступило в силу.</value></data>
+
+  <data name="LoginForm_Username" xml:space="preserve"><value>Имя пользователя:</value></data>
+  <data name="LoginForm_Password" xml:space="preserve"><value>Пароль:</value></data>
+  <data name="LoginForm_Explanation" xml:space="preserve"><value>Это активирует Steam Desktop Authenticator для вашего аккаунта Steam. Потребуется номер телефона, способный принимать SMS.</value></data>
+  <data name="LoginForm_CredentialsExpired" xml:space="preserve"><value>Срок действия ваших учётных данных Steam истёк. Чтобы подтверждения обмена и торговой площадки работали корректно, войдите снова.</value></data>
+  <data name="LoginForm_LoginToImport" xml:space="preserve"><value>Войдите в свой аккаунт Steam, чтобы импортировать его.</value></data>
+  <data name="LoginForm_AccountNotFound" xml:space="preserve"><value>Не удалось найти ваш аккаунт. Попробуйте закрыть и снова открыть SDA.</value></data>
+  <data name="LoginForm_LoginFailedTitle" xml:space="preserve"><value>Вход не выполнен</value></data>
+  <data name="LoginForm_LoginSucceeded" xml:space="preserve"><value>Вход в аккаунт Steam выполнен успешно. Нажмите ОК, чтобы продолжить добавление SDA в качестве аутентификатора.</value></data>
+  <data name="LoginForm_AddingAborted" xml:space="preserve"><value>Добавление аутентификатора отменено.</value></data>
+  <data name="LoginForm_ErrorAddingAuthenticatorPrefix" xml:space="preserve"><value>Ошибка при добавлении аутентификатора: </value></data>
+  <data name="LoginForm_FailedAddPhone" xml:space="preserve"><value>Не удалось добавить номер телефона. Попробуйте снова или используйте другой номер.</value></data>
+  <data name="LoginForm_CheckEmail" xml:space="preserve"><value>Проверьте почту и перейдите по ссылке, присланной Steam, прежде чем продолжить.</value></data>
+  <data name="LoginForm_ErrorAddingAuthenticator" xml:space="preserve"><value>Ошибка при добавлении аутентификатора.</value></data>
+  <data name="LoginForm_UnableToSaveMaFile" xml:space="preserve"><value>Не удалось сохранить файл мобильного аутентификатора. Аутентификатор не привязан.</value></data>
+  <data name="LoginForm_NotYetLinkedPrefix" xml:space="preserve"><value>Мобильный аутентификатор ещё не привязан. Прежде чем завершить привязку, запишите код отзыва: </value></data>
+  <data name="LoginForm_SmsCodePrompt" xml:space="preserve"><value>Введите SMS-код, отправленный на ваш телефон.</value></data>
+  <data name="LoginForm_ConfirmRevocationPrompt" xml:space="preserve"><value>Введите код отзыва, чтобы убедиться, что вы его сохранили.</value></data>
+  <data name="LoginForm_RevocationIncorrect" xml:space="preserve"><value>Код отзыва неверен; аутентификатор не привязан.</value></data>
+  <data name="LoginForm_UnableToGenerateCodesPrefix" xml:space="preserve"><value>Не удалось сгенерировать корректные коды для завершения привязки аутентификатора. Аутентификатор не должен был быть привязан. Если это всё же произошло, запишите код отзыва — это последний шанс его увидеть: </value></data>
+  <data name="LoginForm_UnableToFinalizePrefix" xml:space="preserve"><value>Не удалось завершить привязку аутентификатора. Аутентификатор не должен был быть привязан. Если это всё же произошло, запишите код отзыва — это последний шанс его увидеть: </value></data>
+  <data name="LoginForm_SessionRefreshed" xml:space="preserve"><value>Ваша сессия обновлена.</value></data>
+
+  <data name="Manifest_UnableToSetPasskey" xml:space="preserve"><value>Не удалось установить пароль.</value></data>
+  <data name="Manifest_PasskeySuccessfullySet" xml:space="preserve"><value>Пароль успешно установлен.</value></data>
+  <data name="Manifest_EncryptionIntroPrompt" xml:space="preserve"><value>В этой версии SDA есть шифрование. Введите пароль ниже или нажмите «Отмена», чтобы оставить без шифрования</value></data>
+
+  <data name="Program_AlreadyRunning" xml:space="preserve"><value>Уже запущен другой экземпляр приложения.</value></data>
+
+  <data name="MainForm_SetupNewAccount" xml:space="preserve"><value>Настроить новый аккаунт</value></data>
+  <data name="MainForm_LoginTokenGroup" xml:space="preserve"><value>Код входа</value></data>
+  <data name="MainForm_ViewConfirmations" xml:space="preserve"><value>Подтверждения</value></data>
+  <data name="MainForm_LoginViaQr" xml:space="preserve"><value>Вход по QR-коду</value></data>
+  <data name="MainForm_ManageEncryption" xml:space="preserve"><value>Управление шифрованием</value></data>
+  <data name="MainForm_SetupEncryption" xml:space="preserve"><value>Настроить шифрование</value></data>
+  <data name="MainForm_AccountGroup" xml:space="preserve"><value>Аккаунт</value></data>
+  <data name="MainForm_MenuFile" xml:space="preserve"><value>Файл</value></data>
+  <data name="MainForm_MenuSelectedAccount" xml:space="preserve"><value>Аккаунт</value></data>
+  <data name="MainForm_MenuLoginAgain" xml:space="preserve"><value>Войти снова</value></data>
+  <data name="MainForm_MenuRemoveFromManifest" xml:space="preserve"><value>Удалить из манифеста</value></data>
+  <data name="MainForm_MenuDeactivateAuthenticator" xml:space="preserve"><value>Деактивировать аутентификатор</value></data>
+  <data name="MainForm_TrayRestore" xml:space="preserve"><value>Развернуть</value></data>
+  <data name="MainForm_TrayCopySteamGuard" xml:space="preserve"><value>Скопировать код SG в буфер обмена</value></data>
+  <data name="MainForm_FilterLabel" xml:space="preserve"><value>Фильтр:</value></data>
+  <data name="MainForm_UnableToReadSettings" xml:space="preserve"><value>Не удалось прочитать настройки. Попробуйте перезапустить SDA.</value></data>
+  <data name="MainForm_QrHowToUse" xml:space="preserve"><value>Наведите курсор на QR-код Steam и нажмите ПРАВЫЙ CTRL, чтобы войти</value></data>
+  <data name="MainForm_QrHowToUseTitle" xml:space="preserve"><value>Как использовать?</value></data>
+  <data name="MainForm_QrWrongCode" xml:space="preserve"><value>Не удалось получить ID QR-кода. Наведите курсор точно на центр QR-кода на странице входа Steam. Если ошибка повторяется, этот метод может быть устаревшим.</value></data>
+  <data name="MainForm_QrWrongCodeTitle" xml:space="preserve"><value>Неверный QR-код.</value></data>
+  <data name="MainForm_LoginViaQrErrorTitle" xml:space="preserve"><value>Ошибка входа по QR-коду</value></data>
+  <data name="MainForm_QrLoginFailed" xml:space="preserve"><value>Не удалось войти в аккаунт. Ваш аутентификатор недействителен, попробуйте позже.</value></data>
+  <data name="MainForm_SomethingWentWrongTitle" xml:space="preserve"><value>Что-то пошло не так!</value></data>
+  <data name="MainForm_EnterCurrentPasskeyShort" xml:space="preserve"><value>Введите текущий пароль</value></data>
+  <data name="MainForm_EnterNewPasskeyOrRemove" xml:space="preserve"><value>Введите новый пароль или оставьте пустым, чтобы убрать шифрование.</value></data>
+  <data name="MainForm_ConfirmNewPasskeyOrRemove" xml:space="preserve"><value>Подтвердите новый пароль или оставьте пустым, чтобы убрать шифрование.</value></data>
+  <data name="MainForm_UnableToRemovePasskey" xml:space="preserve"><value>Не удалось удалить пароль.</value></data>
+  <data name="MainForm_UnableToChangePasskey" xml:space="preserve"><value>Не удалось изменить пароль.</value></data>
+  <data name="MainForm_PasskeyRemoved" xml:space="preserve"><value>Пароль успешно удалён.</value></data>
+  <data name="MainForm_PasskeyChanged" xml:space="preserve"><value>Пароль успешно изменён.</value></data>
+  <data name="MainForm_CannotRemoveEncrypted" xml:space="preserve"><value>Нельзя удалять аккаунты из манифеста, пока он зашифрован.</value></data>
+  <data name="MainForm_RemoveFromManifestConfirm" xml:space="preserve"><value>Это удалит выбранный аккаунт из файла манифеста.
+Используйте это, чтобы перенести maFile на другой компьютер.
+Ваш maFile НЕ будет удалён.</value></data>
+  <data name="MainForm_RemovedFromManifest" xml:space="preserve"><value>Аккаунт удалён из манифеста.
+Теперь вы можете перенести его maFile на другой компьютер и импортировать через меню «Файл».</value></data>
+  <data name="MainForm_DeactivateAuthenticatorErrorTitle" xml:space="preserve"><value>Ошибка деактивации аутентификатора</value></data>
+  <data name="MainForm_DeactivateConfirmPrompt" xml:space="preserve"><value>Хотите полностью удалить Steam Guard?
+Да — полностью удалить Steam Guard.
+Нет — переключиться обратно на аутентификацию по email.</value></data>
+  <data name="MainForm_DeactivateAuthenticatorTitlePrefix" xml:space="preserve"><value>Деактивация аутентификатора: </value></data>
+  <data name="MainForm_RemovingSteamGuardFormat" xml:space="preserve"><value>Удаление Steam Guard с {0}. Введите этот код подтверждения: {1}</value></data>
+  <data name="MainForm_ConfCodesDontMatch" xml:space="preserve"><value>Коды подтверждения не совпадают. Steam Guard не удалён.</value></data>
+  <data name="MainForm_SteamGuardRemovedCompletely" xml:space="preserve"><value>Steam Guard полностью удалён. Файл maFile будет удалён после нажатия ОК. Если нужна резервная копия — сейчас самое время.</value></data>
+  <data name="MainForm_SteamGuardSwitchedEmail" xml:space="preserve"><value>Steam Guard переключён на email. Файл maFile будет удалён после нажатия ОК. Если нужна резервная копия — сейчас самое время.</value></data>
+  <data name="MainForm_DeactivateFailed" xml:space="preserve"><value>Не удалось деактивировать Steam Guard.</value></data>
+  <data name="MainForm_DeactivateNoAction" xml:space="preserve"><value>Steam Guard не был удалён. Никаких действий не выполнено.</value></data>
+  <data name="MainForm_AligningTime" xml:space="preserve"><value>Синхронизация времени со Steam...</value></data>
+  <data name="MainForm_SessionExpiredForAccountFormat" xml:space="preserve"><value>Сессия для аккаунта {0} истекла. Вам будет предложено войти снова.</value></data>
+  <data name="MainForm_RefreshingSession" xml:space="preserve"><value>Обновление сессии...</value></data>
+  <data name="MainForm_CheckingConfirmations" xml:space="preserve"><value>Проверка подтверждений...</value></data>
+  <data name="MainForm_AccountNameFormat" xml:space="preserve"><value>Аккаунт: {0}</value></data>
+
+</root>

@@ -68,7 +68,7 @@ namespace Steam_Desktop_Authenticator
             }
             catch (ManifestParseException)
             {
-                MessageBox.Show("Unable to read your settings. Try restating SDA.", "Steam Desktop Authenticator", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                MessageBox.Show(Strings.Get("MainForm_UnableToReadSettings"), Strings.Get("App_Title"), MessageBoxButtons.OK, MessageBoxIcon.Error);
                 this.Close();
             }
 
@@ -90,11 +90,11 @@ namespace Steam_Desktop_Authenticator
                     }
                 }
 
-                btnManageEncryption.Text = "Manage Encryption";
+                btnManageEncryption.Text = Strings.Get("MainForm_ManageEncryption");
             }
             else
             {
-                btnManageEncryption.Text = "Setup Encryption";
+                btnManageEncryption.Text = Strings.Get("MainForm_SetupEncryption");
             }
 
             btnManageEncryption.Enabled = manifest.Entries.Count > 0;
@@ -154,7 +154,7 @@ namespace Steam_Desktop_Authenticator
             this.btnLoginViaQr.Enabled = false;
             if (this.manifest.FirstQR)
             {
-                MessageBox.Show("Move your cursor to Steam QR code and press RIGHT CTRL to sign in", "How to use?", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                MessageBox.Show(Strings.Get("MainForm_QrHowToUse"), Strings.Get("MainForm_QrHowToUseTitle"), MessageBoxButtons.OK, MessageBoxIcon.Information);
                 this.manifest.FirstQR = false;
                 this.manifest.Save();
             }
@@ -183,13 +183,13 @@ namespace Steam_Desktop_Authenticator
                 
                 if (!Regex.IsMatch(result.Text, @"^https?://s\.team/q/\d+/\d+"))
                 {
-                    MessageBox.Show("Can't get ID of QR code. You need to position your cursor at the center of the QR code on the Steam login page. If you have the same error again, this method might be deprecated.", "Wrong QR code.", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    MessageBox.Show(Strings.Get("MainForm_QrWrongCode"), Strings.Get("MainForm_QrWrongCodeTitle"), MessageBoxButtons.OK, MessageBoxIcon.Error);
                     return;
                 }
 
                 if (currentAccount.Session.IsRefreshTokenExpired())
                 {
-                    MessageBox.Show("Your session has expired. Use the login again button under the selected account menu.", "Login via QR", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    MessageBox.Show(Strings.Get("Common_SessionExpired"), Strings.Get("MainForm_LoginViaQr"), MessageBoxButtons.OK, MessageBoxIcon.Error);
                     return;
                 }
 
@@ -201,7 +201,7 @@ namespace Steam_Desktop_Authenticator
                     }
                     catch (Exception ex)
                     {
-                        MessageBox.Show(ex.Message, "Login via QR Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                        MessageBox.Show(ex.Message, Strings.Get("MainForm_LoginViaQrErrorTitle"), MessageBoxButtons.OK, MessageBoxIcon.Error);
                         return;
                     }
                 }
@@ -213,12 +213,12 @@ namespace Steam_Desktop_Authenticator
                 }
                 catch (Exception ex)
                 {
-                    MessageBox.Show(ex.Message, "Login via QR Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    MessageBox.Show(ex.Message, Strings.Get("MainForm_LoginViaQrErrorTitle"), MessageBoxButtons.OK, MessageBoxIcon.Error);
                     return;
                 }
 
                 if (!success)
-                    MessageBox.Show("Can't log in to account. Your authenticator is not valid or try again later.", "Something wen't wrong!", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    MessageBox.Show(Strings.Get("MainForm_QrLoginFailed"), Strings.Get("MainForm_SomethingWentWrongTitle"), MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
         }
 
@@ -227,7 +227,7 @@ namespace Steam_Desktop_Authenticator
             if (currentAccount == null) return;
 
             string oText = btnTradeConfirmations.Text;
-            btnTradeConfirmations.Text = "Loading...";
+            btnTradeConfirmations.Text = Strings.Get("Common_Loading");
             btnTradeConfirmations.Text = oText;
 
             ConfirmationFormWeb confirms = new ConfirmationFormWeb(currentAccount);
@@ -238,7 +238,7 @@ namespace Steam_Desktop_Authenticator
         {
             if (manifest.Encrypted)
             {
-                InputForm currentPassKeyForm = new InputForm("Enter current passkey", true);
+                InputForm currentPassKeyForm = new InputForm(Strings.Get("MainForm_EnterCurrentPasskeyShort"), true);
                 currentPassKeyForm.ShowDialog();
 
                 if (currentPassKeyForm.Canceled)
@@ -248,7 +248,7 @@ namespace Steam_Desktop_Authenticator
 
                 string curPassKey = currentPassKeyForm.txtBox.Text;
 
-                InputForm changePassKeyForm = new InputForm("Enter new passkey, or leave blank to remove encryption.");
+                InputForm changePassKeyForm = new InputForm(Strings.Get("MainForm_EnterNewPasskeyOrRemove"));
                 changePassKeyForm.ShowDialog();
 
                 if (changePassKeyForm.Canceled && !string.IsNullOrEmpty(changePassKeyForm.txtBox.Text))
@@ -256,7 +256,7 @@ namespace Steam_Desktop_Authenticator
                     return;
                 }
 
-                InputForm changePassKeyForm2 = new InputForm("Confirm new passkey, or leave blank to remove encryption.");
+                InputForm changePassKeyForm2 = new InputForm(Strings.Get("MainForm_ConfirmNewPasskeyOrRemove"));
                 changePassKeyForm2.ShowDialog();
 
                 if (changePassKeyForm2.Canceled && !string.IsNullOrEmpty(changePassKeyForm.txtBox.Text))
@@ -269,7 +269,7 @@ namespace Steam_Desktop_Authenticator
 
                 if (newPassKey != confirmPassKey)
                 {
-                    MessageBox.Show("Passkeys do not match.");
+                    MessageBox.Show(Strings.Get("Common_PasskeysDoNotMatch"));
                     return;
                 }
 
@@ -278,14 +278,14 @@ namespace Steam_Desktop_Authenticator
                     newPassKey = null;
                 }
 
-                string action = newPassKey == null ? "remove" : "change";
+                bool removing = newPassKey == null;
                 if (!manifest.ChangeEncryptionKey(curPassKey, newPassKey))
                 {
-                    MessageBox.Show("Unable to " + action + " passkey.");
+                    MessageBox.Show(Strings.Get(removing ? "MainForm_UnableToRemovePasskey" : "MainForm_UnableToChangePasskey"));
                 }
                 else
                 {
-                    MessageBox.Show("Passkey successfully " + action + "d.");
+                    MessageBox.Show(Strings.Get(removing ? "MainForm_PasskeyRemoved" : "MainForm_PasskeyChanged"));
                     this.loadAccountsList();
                 }
             }
@@ -313,15 +313,15 @@ namespace Steam_Desktop_Authenticator
         {
             if (manifest.Encrypted)
             {
-                MessageBox.Show("You cannot remove accounts from the manifest file while it is encrypted.", "Remove from manifest", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                MessageBox.Show(Strings.Get("MainForm_CannotRemoveEncrypted"), Strings.Get("MainForm_MenuRemoveFromManifest"), MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
             else
             {
-                DialogResult res = MessageBox.Show("This will remove the selected account from the manifest file.\nUse this to move a maFile to another computer.\nThis will NOT delete your maFile.", "Remove from manifest", MessageBoxButtons.OKCancel);
+                DialogResult res = MessageBox.Show(Strings.Get("MainForm_RemoveFromManifestConfirm"), Strings.Get("MainForm_MenuRemoveFromManifest"), MessageBoxButtons.OKCancel);
                 if (res == DialogResult.OK)
                 {
                     manifest.RemoveAccount(currentAccount, false);
-                    MessageBox.Show("Account removed from manifest.\nYou can now move its maFile to another computer and import it using the File menu.", "Remove from manifest");
+                    MessageBox.Show(Strings.Get("MainForm_RemovedFromManifest"), Strings.Get("MainForm_MenuRemoveFromManifest"));
                     loadAccountsList();
                 }
             }
@@ -353,7 +353,7 @@ namespace Steam_Desktop_Authenticator
             // Check for a valid refresh token first
             if (currentAccount.Session.IsRefreshTokenExpired())
             {
-                MessageBox.Show("Your session has expired. Use the login again button under the selected account menu.", "Deactivate Authenticator", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                MessageBox.Show(Strings.Get("Common_SessionExpired"), Strings.Get("MainForm_MenuDeactivateAuthenticator"), MessageBoxButtons.OK, MessageBoxIcon.Error);
                 return;
             }
 
@@ -366,12 +366,12 @@ namespace Steam_Desktop_Authenticator
                 }
                 catch (Exception ex)
                 {
-                    MessageBox.Show(ex.Message, "Deactivate Authenticator Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    MessageBox.Show(ex.Message, Strings.Get("MainForm_DeactivateAuthenticatorErrorTitle"), MessageBoxButtons.OK, MessageBoxIcon.Error);
                     return;
                 }
             }
 
-            DialogResult res = MessageBox.Show("Would you like to remove Steam Guard completely?\nYes - Remove Steam Guard completely.\nNo - Switch back to Email authentication.", "Deactivate Authenticator: " + currentAccount.AccountName, MessageBoxButtons.YesNoCancel);
+            DialogResult res = MessageBox.Show(Strings.Get("MainForm_DeactivateConfirmPrompt"), Strings.Get("MainForm_DeactivateAuthenticatorTitlePrefix") + currentAccount.AccountName, MessageBoxButtons.YesNoCancel);
             int scheme = 0;
             if (res == DialogResult.Yes)
             {
@@ -389,7 +389,7 @@ namespace Steam_Desktop_Authenticator
             if (scheme != 0)
             {
                 string confCode = currentAccount.GenerateSteamGuardCode();
-                InputForm confirmationDialog = new InputForm(String.Format("Removing Steam Guard from {0}. Enter this confirmation code: {1}", currentAccount.AccountName, confCode));
+                InputForm confirmationDialog = new InputForm(String.Format(Strings.Get("MainForm_RemovingSteamGuardFormat"), currentAccount.AccountName, confCode));
                 confirmationDialog.ShowDialog();
 
                 if (confirmationDialog.Canceled)
@@ -400,25 +400,25 @@ namespace Steam_Desktop_Authenticator
                 string enteredCode = confirmationDialog.txtBox.Text.ToUpper();
                 if (enteredCode != confCode)
                 {
-                    MessageBox.Show("Confirmation codes do not match. Steam Guard not removed.");
+                    MessageBox.Show(Strings.Get("MainForm_ConfCodesDontMatch"));
                     return;
                 }
 
                 bool success = await currentAccount.DeactivateAuthenticator(scheme);
                 if (success)
                 {
-                    MessageBox.Show(String.Format("Steam Guard {0}. maFile will be deleted after hitting okay. If you need to make a backup, now's the time.", (scheme == 2 ? "removed completely" : "switched to emails")));
+                    MessageBox.Show(Strings.Get(scheme == 2 ? "MainForm_SteamGuardRemovedCompletely" : "MainForm_SteamGuardSwitchedEmail"));
                     this.manifest.RemoveAccount(currentAccount);
                     this.loadAccountsList();
                 }
                 else
                 {
-                    MessageBox.Show("Steam Guard failed to deactivate.");
+                    MessageBox.Show(Strings.Get("MainForm_DeactivateFailed"));
                 }
             }
             else
             {
-                MessageBox.Show("Steam Guard was not removed. No action was taken.");
+                MessageBox.Show(Strings.Get("MainForm_DeactivateNoAction"));
             }
         }
 
@@ -495,7 +495,7 @@ namespace Steam_Desktop_Authenticator
 
         private async void timerSteamGuard_Tick(object sender, EventArgs e)
         {
-            lblStatus.Text = "Aligning time with Steam...";
+            lblStatus.Text = Strings.Get("MainForm_AligningTime");
             steamTime = await TimeAligner.GetSteamTimeAsync();
             lblStatus.Text = "";
 
@@ -525,14 +525,14 @@ namespace Steam_Desktop_Authenticator
 
             try
             {
-                lblStatus.Text = "Checking confirmations...";
+                lblStatus.Text = Strings.Get("MainForm_CheckingConfirmations");
 
                 foreach (var acc in accs)
                 {
                     // Check for a valid refresh token first
                     if (acc.Session.IsRefreshTokenExpired())
                     {
-                        MessageBox.Show("Your session for account " + acc.AccountName + " has expired. You will be prompted to login again.", "Trade Confirmations", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                        MessageBox.Show(String.Format(Strings.Get("MainForm_SessionExpiredForAccountFormat"), acc.AccountName), Strings.Get("ConfirmationFormWeb_Title"), MessageBoxButtons.OK, MessageBoxIcon.Error);
                         PromptRefreshLogin(acc);
                         break;
                     }
@@ -542,13 +542,13 @@ namespace Steam_Desktop_Authenticator
                     {
                         try
                         {
-                            lblStatus.Text = "Refreshing session...";
+                            lblStatus.Text = Strings.Get("MainForm_RefreshingSession");
                             await acc.Session.RefreshAccessToken();
-                            lblStatus.Text = "Checking confirmations...";
+                            lblStatus.Text = Strings.Get("MainForm_CheckingConfirmations");
                         }
                         catch (Exception ex)
                         {
-                            MessageBox.Show(ex.Message, "Steam Login Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                            MessageBox.Show(ex.Message, Strings.Get("Common_SteamLoginErrorTitle"), MessageBoxButtons.OK, MessageBoxIcon.Error);
                             break;
                         }
                     }
@@ -628,7 +628,7 @@ namespace Steam_Desktop_Authenticator
             {
                 popupFrm.Account = currentAccount;
                 txtLoginToken.Text = currentAccount.GenerateSteamGuardCodeForTime(steamTime);
-                groupAccount.Text = "Account: " + currentAccount.AccountName;
+                groupAccount.Text = String.Format(Strings.Get("MainForm_AccountNameFormat"), currentAccount.AccountName);
             }
         }
 

@@ -1,0 +1,263 @@
+<?xml version="1.0" encoding="utf-8"?>
+<root>
+  <xsd:schema id="root" xmlns="" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:msdata="urn:schemas-microsoft-com:xml-msdata">
+    <xsd:import namespace="http://www.w3.org/XML/1998/namespace" />
+    <xsd:element name="root" msdata:IsDataSet="true">
+      <xsd:complexType>
+        <xsd:choice maxOccurs="unbounded">
+          <xsd:element name="metadata">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" />
+              </xsd:sequence>
+              <xsd:attribute name="name" use="required" type="xsd:string" />
+              <xsd:attribute name="type" type="xsd:string" />
+              <xsd:attribute name="mimetype" type="xsd:string" />
+              <xsd:attribute ref="xml:space" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="assembly">
+            <xsd:complexType>
+              <xsd:attribute name="alias" type="xsd:string" />
+              <xsd:attribute name="name" type="xsd:string" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="data">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" msdata:Ordinal="1" />
+                <xsd:element name="comment" type="xsd:string" minOccurs="0" msdata:Ordinal="2" />
+              </xsd:sequence>
+              <xsd:attribute name="name" type="xsd:string" use="required" msdata:Ordinal="1" />
+              <xsd:attribute name="type" type="xsd:string" msdata:Ordinal="3" />
+              <xsd:attribute name="mimetype" type="xsd:string" msdata:Ordinal="4" />
+              <xsd:attribute ref="xml:space" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="resheader">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" msdata:Ordinal="1" />
+              </xsd:sequence>
+              <xsd:attribute name="name" type="xsd:string" use="required" />
+            </xsd:complexType>
+          </xsd:element>
+        </xsd:choice>
+      </xsd:complexType>
+    </xsd:element>
+  </xsd:schema>
+  <resheader name="resmimetype">
+    <value>text/microsoft-resx</value>
+  </resheader>
+  <resheader name="version">
+    <value>2.0</value>
+  </resheader>
+  <resheader name="reader">
+    <value>System.Resources.ResXResourceReader, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </resheader>
+  <resheader name="writer">
+    <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </resheader>
+
+  <data name="App_Title" xml:space="preserve"><value>Steam Desktop Authenticator</value></data>
+
+  <data name="Common_Accept" xml:space="preserve"><value>Accept</value></data>
+  <data name="Common_Cancel" xml:space="preserve"><value>Cancel</value></data>
+  <data name="Common_Submit" xml:space="preserve"><value>Submit</value></data>
+  <data name="Common_Save" xml:space="preserve"><value>Save</value></data>
+  <data name="Common_Login" xml:space="preserve"><value>Login</value></data>
+  <data name="Common_LoggingIn" xml:space="preserve"><value>Logging in...</value></data>
+  <data name="Common_Refresh" xml:space="preserve"><value>Refresh</value></data>
+  <data name="Common_Refreshing" xml:space="preserve"><value>Refreshing...</value></data>
+  <data name="Common_Loading" xml:space="preserve"><value>Loading...</value></data>
+  <data name="Common_Deny" xml:space="preserve"><value>Deny</value></data>
+  <data name="Common_Error" xml:space="preserve"><value>Error</value></data>
+  <data name="Common_Warning" xml:space="preserve"><value>Warning!</value></data>
+  <data name="Common_Quit" xml:space="preserve"><value>Quit</value></data>
+  <data name="Common_Copy" xml:space="preserve"><value>Copy</value></data>
+  <data name="Common_SteamLoginTitle" xml:space="preserve"><value>Steam Login</value></data>
+  <data name="Common_SteamLoginErrorTitle" xml:space="preserve"><value>Steam Login Error</value></data>
+  <data name="Common_SessionExpired" xml:space="preserve"><value>Your session has expired. Use the login again button under the selected account menu.</value></data>
+  <data name="Common_AuthenticatorAlreadyLinked" xml:space="preserve"><value>This account already has an authenticator linked. You must remove that authenticator to add SDA as your authenticator.</value></data>
+  <data name="Common_SettingsCorrupted" xml:space="preserve"><value>Your settings were unexpectedly corrupted and were reset to defaults.</value></data>
+  <data name="Common_UnrecoverableEncrypted" xml:space="preserve"><value>Sorry, but SDA was unable to recover your accounts since you used encryption.
+You'll need to recover your Steam accounts by removing the authenticator.
+Click OK to view instructions.</value></data>
+  <data name="Common_EnterEncryptionPasskeyPrompt" xml:space="preserve"><value>Please enter an encryption passkey. Leave blank or hit cancel to not encrypt (VERY INSECURE).</value></data>
+  <data name="Common_EnterCurrentPasskeyPrompt" xml:space="preserve"><value>Please enter your current encryption passkey.</value></data>
+  <data name="Common_PasskeyInvalid" xml:space="preserve"><value>That passkey is invalid.</value></data>
+  <data name="Common_PasskeyInvalidSameAccounts" xml:space="preserve"><value>That passkey is invalid. Please enter the same passkey you used for your other accounts.</value></data>
+  <data name="Common_EnterPasskeyOrCancelPrompt" xml:space="preserve"><value>Enter passkey, or hit cancel to remain unencrypted.</value></data>
+  <data name="Common_NoEncryptionWarning" xml:space="preserve"><value>WARNING: You chose to not encrypt your files. Doing so imposes a security risk for yourself. If an attacker were to gain access to your computer, they could completely lock you out of your account and steal all your items.</value></data>
+  <data name="Common_ConfirmNewPasskeyPrompt" xml:space="preserve"><value>Confirm new passkey.</value></data>
+  <data name="Common_PasskeysDoNotMatch" xml:space="preserve"><value>Passkeys do not match.</value></data>
+  <data name="Common_EnterEncryptionPasskeySimplePrompt" xml:space="preserve"><value>Please enter your encryption passkey.</value></data>
+  <data name="Common_AuthenticatorLinkedPrefix" xml:space="preserve"><value>Mobile authenticator successfully linked. Please write down your revocation code: </value></data>
+  <data name="Common_ImportAccount" xml:space="preserve"><value>Import Account</value></data>
+
+  <data name="ListInputForm_Title" xml:space="preserve"><value>Select one</value></data>
+
+  <data name="PhoneInputForm_Title" xml:space="preserve"><value>Add Phone Number</value></data>
+  <data name="PhoneInputForm_Explanation" xml:space="preserve"><value>Your Steam account requires a phone number to add a mobile authenticator.
+This phone number must be able to receieve SMS.
+VoIP and virtual phone numbers are not supported.</value></data>
+  <data name="PhoneInputForm_CountryCodeLabel" xml:space="preserve"><value>Two letter country code of the phone number:</value></data>
+  <data name="PhoneInputForm_PhoneNumberLabel" xml:space="preserve"><value>Phone Number: (+1 0000000000)</value></data>
+  <data name="PhoneInputForm_MustStartWithPlus" xml:space="preserve"><value>Phone number must start with + and country code.</value></data>
+
+  <data name="CaptchaForm_Prompt" xml:space="preserve"><value>Please enter the following captcha code:</value></data>
+
+  <data name="TradePopupForm_Title" xml:space="preserve"><value>New confirmation</value></data>
+  <data name="TradePopupForm_PressAcceptAgain" xml:space="preserve"><value>Press Accept again to confirm</value></data>
+  <data name="TradePopupForm_Accepting" xml:space="preserve"><value>Accepting...</value></data>
+  <data name="TradePopupForm_PressDenyAgain" xml:space="preserve"><value>Press Deny again to confirm</value></data>
+  <data name="TradePopupForm_Denying" xml:space="preserve"><value>Denying...</value></data>
+  <data name="TradePopupForm_ConfirmationLabel" xml:space="preserve"><value>Confirmation</value></data>
+
+  <data name="ConfirmationFormWeb_TitleFormat" xml:space="preserve"><value>Trade Confirmations - {0}</value></data>
+  <data name="ConfirmationFormWeb_Title" xml:space="preserve"><value>Trade Confirmations</value></data>
+  <data name="ConfirmationFormWeb_NothingToConfirm" xml:space="preserve"><value>Nothing to confirm/cancel</value></data>
+  <data name="ConfirmationFormWeb_SomethingWentWrong" xml:space="preserve"><value>Something went wrong:
+</value></data>
+
+  <data name="UserFormAuthenticator_TwoFactorIssue" xml:space="preserve"><value>There seems to be an issue logging into your account with these two factor codes. Are you sure SDA is still your authenticator?</value></data>
+  <data name="UserFormAuthenticator_EmailCodePrompt" xml:space="preserve"><value>Enter the code sent to your email:</value></data>
+  <data name="UserFormAuthenticator_EmailCodeInvalidPrompt" xml:space="preserve"><value>The code you provided was invalid. Enter the code sent to your email:</value></data>
+
+  <data name="ImportAccountForm_Title" xml:space="preserve"><value>Import Account</value></data>
+  <data name="ImportAccountForm_DialogTitle" xml:space="preserve"><value>Account Import</value></data>
+  <data name="ImportAccountForm_PasskeyLabel" xml:space="preserve"><value>Enter your encryption passkey if your .maFile is encrypted:</value></data>
+  <data name="ImportAccountForm_SelectButton" xml:space="preserve"><value>Select .maFile file to Import</value></data>
+  <data name="ImportAccountForm_ManifestNote" xml:space="preserve"><value>If you import an encrypted .maFile, the manifest file must be next to it.</value></data>
+  <data name="ImportAccountForm_ExistingEncrypted" xml:space="preserve"><value>You can't import an .maFile because the existing account in the app is encrypted.
+Decrypt it and try again.</value></data>
+  <data name="ImportAccountForm_InvalidEncryptedValue" xml:space="preserve"><value>invalid value for variable 'encrypted' inside manifest.json</value></data>
+  <data name="ImportAccountForm_GenericRestart" xml:space="preserve"><value>An Error occurred, Restart the program!</value></data>
+  <data name="ImportAccountForm_LoginFailed" xml:space="preserve"><value>Login failed. Try to import this account again.</value></data>
+  <data name="ImportAccountForm_Imported" xml:space="preserve"><value>Account Imported!</value></data>
+  <data name="ImportAccountForm_InvalidManifestContent" xml:space="preserve"><value>Invalid content inside manifest.json!
+Import Failed.</value></data>
+  <data name="ImportAccountForm_DecryptionFailed" xml:space="preserve"><value>Decryption Failed.
+Import Failed.</value></data>
+  <data name="ImportAccountForm_ImportedDecrypted" xml:space="preserve"><value>Account Imported!
+Your Account in now Decrypted!</value></data>
+  <data name="ImportAccountForm_AccountNotFound" xml:space="preserve"><value>Account not found inside manifest.json.
+Import Failed.</value></data>
+  <data name="ImportAccountForm_NoEncryptedData" xml:space="preserve"><value>manifest.json does not contain encrypted data.
+Your account may be unencrypted!
+Import Failed.</value></data>
+  <data name="ImportAccountForm_MissingIV" xml:space="preserve"><value>manifest.json does not contain: encryption_iv
+Import Failed.</value></data>
+  <data name="ImportAccountForm_MissingSalt" xml:space="preserve"><value>manifest.json does not contain: encryption_salt
+Import Failed.</value></data>
+  <data name="ImportAccountForm_ManifestMissing" xml:space="preserve"><value>manifest.json is missing!
+Import Failed.</value></data>
+  <data name="ImportAccountForm_InvalidMaFile" xml:space="preserve"><value>This file is not a valid SteamAuth maFile.
+Import Failed.</value></data>
+
+  <data name="WelcomeForm_Welcome" xml:space="preserve"><value>Welcome to
+Steam Desktop Authenticator</value></data>
+  <data name="WelcomeForm_ImportButton" xml:space="preserve"><value>I already setup Steam Desktop Authenticator in another location on this PC and I want to import its account(s).
+</value></data>
+  <data name="WelcomeForm_SelectItem" xml:space="preserve"><value>Select an item to get started:</value></data>
+  <data name="WelcomeForm_FirstTimeButton" xml:space="preserve"><value>This is my first time and
+I just want to sign into my Steam Account(s).</value></data>
+  <data name="WelcomeForm_SelectFolderDescription" xml:space="preserve"><value>Select the folder of your old Steam Desktop Authenticator install</value></data>
+  <data name="WelcomeForm_FolderInvalid" xml:space="preserve"><value>This folder does not contain either a manifest.json or an maFiles folder.
+Please select the location where you had Steam Desktop Authenticator installed.</value></data>
+  <data name="WelcomeForm_ImportedAll" xml:space="preserve"><value>All accounts and settings have been imported! Click OK to continue.</value></data>
+  <data name="WelcomeForm_ImportAccountsTitle" xml:space="preserve"><value>Import accounts</value></data>
+
+  <data name="SettingsForm_Title" xml:space="preserve"><value>Settings</value></data>
+  <data name="SettingsForm_PeriodicChecking" xml:space="preserve"><value>Periodically check for new confirmations and show a popup when they arrive</value></data>
+  <data name="SettingsForm_SecondsBetween" xml:space="preserve"><value>Seconds between checking
+for confirmations</value></data>
+  <data name="SettingsForm_CheckAll" xml:space="preserve"><value>Check all accounts for confirmations</value></data>
+  <data name="SettingsForm_AutoConfirmMarket" xml:space="preserve"><value>Auto-confirm market transactions</value></data>
+  <data name="SettingsForm_AutoConfirmTrades" xml:space="preserve"><value>Auto-confirm trades</value></data>
+  <data name="SettingsForm_SecurityWarning" xml:space="preserve"><value>Warning: enabling this will severely reduce the security of your items! Use of this option is at your own risk. Would you like to continue?</value></data>
+  <data name="SettingsForm_Language" xml:space="preserve"><value>Language:</value></data>
+  <data name="SettingsForm_RestartRequired" xml:space="preserve"><value>Restart Steam Desktop Authenticator for the language change to take effect.</value></data>
+
+  <data name="LoginForm_Username" xml:space="preserve"><value>Username:</value></data>
+  <data name="LoginForm_Password" xml:space="preserve"><value>Password:</value></data>
+  <data name="LoginForm_Explanation" xml:space="preserve"><value>This will activate Steam Desktop Authenticator on your Steam account. This requires a phone number that can receive SMS.</value></data>
+  <data name="LoginForm_CredentialsExpired" xml:space="preserve"><value>Your Steam credentials have expired. For trade and market confirmations to work properly, please login again.</value></data>
+  <data name="LoginForm_LoginToImport" xml:space="preserve"><value>Please login to your Steam account import it.</value></data>
+  <data name="LoginForm_AccountNotFound" xml:space="preserve"><value>Failed to find your account. Try closing and re-opening SDA.</value></data>
+  <data name="LoginForm_LoginFailedTitle" xml:space="preserve"><value>Login Failed</value></data>
+  <data name="LoginForm_LoginSucceeded" xml:space="preserve"><value>Steam account login succeeded. Press OK to continue adding SDA as your authenticator.</value></data>
+  <data name="LoginForm_AddingAborted" xml:space="preserve"><value>Adding authenticator aborted.</value></data>
+  <data name="LoginForm_ErrorAddingAuthenticatorPrefix" xml:space="preserve"><value>Error adding your authenticator: </value></data>
+  <data name="LoginForm_FailedAddPhone" xml:space="preserve"><value>Failed to add your phone number. Please try again or use a different phone number.</value></data>
+  <data name="LoginForm_CheckEmail" xml:space="preserve"><value>Please check your email, and click the link Steam sent you before continuing.</value></data>
+  <data name="LoginForm_ErrorAddingAuthenticator" xml:space="preserve"><value>Error adding your authenticator.</value></data>
+  <data name="LoginForm_UnableToSaveMaFile" xml:space="preserve"><value>Unable to save mobile authenticator file. The mobile authenticator has not been linked.</value></data>
+  <data name="LoginForm_NotYetLinkedPrefix" xml:space="preserve"><value>The Mobile Authenticator has not yet been linked. Before finalizing the authenticator, please write down your revocation code: </value></data>
+  <data name="LoginForm_SmsCodePrompt" xml:space="preserve"><value>Please input the SMS code sent to your phone.</value></data>
+  <data name="LoginForm_ConfirmRevocationPrompt" xml:space="preserve"><value>Please enter your revocation code to ensure you've saved it.</value></data>
+  <data name="LoginForm_RevocationIncorrect" xml:space="preserve"><value>Revocation code incorrect; the authenticator has not been linked.</value></data>
+  <data name="LoginForm_UnableToGenerateCodesPrefix" xml:space="preserve"><value>Unable to generate the proper codes to finalize this authenticator. The authenticator should not have been linked. In the off-chance it was, please write down your revocation code, as this is the last chance to see it: </value></data>
+  <data name="LoginForm_UnableToFinalizePrefix" xml:space="preserve"><value>Unable to finalize this authenticator. The authenticator should not have been linked. In the off-chance it was, please write down your revocation code, as this is the last chance to see it: </value></data>
+  <data name="LoginForm_SessionRefreshed" xml:space="preserve"><value>Your session was refreshed.</value></data>
+
+  <data name="Manifest_UnableToSetPasskey" xml:space="preserve"><value>Unable to set passkey.</value></data>
+  <data name="Manifest_PasskeySuccessfullySet" xml:space="preserve"><value>Passkey successfully set.</value></data>
+  <data name="Manifest_EncryptionIntroPrompt" xml:space="preserve"><value>This version of SDA has encryption. Please enter a passkey below, or hit cancel to remain unencrypted</value></data>
+
+  <data name="Program_AlreadyRunning" xml:space="preserve"><value>Another instance of the app is already running.</value></data>
+
+  <data name="MainForm_SetupNewAccount" xml:space="preserve"><value>Setup New Account</value></data>
+  <data name="MainForm_LoginTokenGroup" xml:space="preserve"><value>Login Token</value></data>
+  <data name="MainForm_ViewConfirmations" xml:space="preserve"><value>View Confirmations</value></data>
+  <data name="MainForm_LoginViaQr" xml:space="preserve"><value>Login via QR</value></data>
+  <data name="MainForm_ManageEncryption" xml:space="preserve"><value>Manage Encryption</value></data>
+  <data name="MainForm_SetupEncryption" xml:space="preserve"><value>Setup Encryption</value></data>
+  <data name="MainForm_AccountGroup" xml:space="preserve"><value>Account</value></data>
+  <data name="MainForm_MenuFile" xml:space="preserve"><value>File</value></data>
+  <data name="MainForm_MenuSelectedAccount" xml:space="preserve"><value>Selected Account</value></data>
+  <data name="MainForm_MenuLoginAgain" xml:space="preserve"><value>Login again</value></data>
+  <data name="MainForm_MenuRemoveFromManifest" xml:space="preserve"><value>Remove from manifest</value></data>
+  <data name="MainForm_MenuDeactivateAuthenticator" xml:space="preserve"><value>Deactivate Authenticator</value></data>
+  <data name="MainForm_TrayRestore" xml:space="preserve"><value>Restore</value></data>
+  <data name="MainForm_TrayCopySteamGuard" xml:space="preserve"><value>Copy SG code to clipboard</value></data>
+  <data name="MainForm_FilterLabel" xml:space="preserve"><value>Filter:</value></data>
+  <data name="MainForm_UnableToReadSettings" xml:space="preserve"><value>Unable to read your settings. Try restating SDA.</value></data>
+  <data name="MainForm_QrHowToUse" xml:space="preserve"><value>Move your cursor to Steam QR code and press RIGHT CTRL to sign in</value></data>
+  <data name="MainForm_QrHowToUseTitle" xml:space="preserve"><value>How to use?</value></data>
+  <data name="MainForm_QrWrongCode" xml:space="preserve"><value>Can't get ID of QR code. You need to position your cursor at the center of the QR code on the Steam login page. If you have the same error again, this method might be deprecated.</value></data>
+  <data name="MainForm_QrWrongCodeTitle" xml:space="preserve"><value>Wrong QR code.</value></data>
+  <data name="MainForm_LoginViaQrErrorTitle" xml:space="preserve"><value>Login via QR Error</value></data>
+  <data name="MainForm_QrLoginFailed" xml:space="preserve"><value>Can't log in to account. Your authenticator is not valid or try again later.</value></data>
+  <data name="MainForm_SomethingWentWrongTitle" xml:space="preserve"><value>Something wen't wrong!</value></data>
+  <data name="MainForm_EnterCurrentPasskeyShort" xml:space="preserve"><value>Enter current passkey</value></data>
+  <data name="MainForm_EnterNewPasskeyOrRemove" xml:space="preserve"><value>Enter new passkey, or leave blank to remove encryption.</value></data>
+  <data name="MainForm_ConfirmNewPasskeyOrRemove" xml:space="preserve"><value>Confirm new passkey, or leave blank to remove encryption.</value></data>
+  <data name="MainForm_UnableToRemovePasskey" xml:space="preserve"><value>Unable to remove passkey.</value></data>
+  <data name="MainForm_UnableToChangePasskey" xml:space="preserve"><value>Unable to change passkey.</value></data>
+  <data name="MainForm_PasskeyRemoved" xml:space="preserve"><value>Passkey successfully removed.</value></data>
+  <data name="MainForm_PasskeyChanged" xml:space="preserve"><value>Passkey successfully changed.</value></data>
+  <data name="MainForm_CannotRemoveEncrypted" xml:space="preserve"><value>You cannot remove accounts from the manifest file while it is encrypted.</value></data>
+  <data name="MainForm_RemoveFromManifestConfirm" xml:space="preserve"><value>This will remove the selected account from the manifest file.
+Use this to move a maFile to another computer.
+This will NOT delete your maFile.</value></data>
+  <data name="MainForm_RemovedFromManifest" xml:space="preserve"><value>Account removed from manifest.
+You can now move its maFile to another computer and import it using the File menu.</value></data>
+  <data name="MainForm_DeactivateAuthenticatorErrorTitle" xml:space="preserve"><value>Deactivate Authenticator Error</value></data>
+  <data name="MainForm_DeactivateConfirmPrompt" xml:space="preserve"><value>Would you like to remove Steam Guard completely?
+Yes - Remove Steam Guard completely.
+No - Switch back to Email authentication.</value></data>
+  <data name="MainForm_DeactivateAuthenticatorTitlePrefix" xml:space="preserve"><value>Deactivate Authenticator: </value></data>
+  <data name="MainForm_RemovingSteamGuardFormat" xml:space="preserve"><value>Removing Steam Guard from {0}. Enter this confirmation code: {1}</value></data>
+  <data name="MainForm_ConfCodesDontMatch" xml:space="preserve"><value>Confirmation codes do not match. Steam Guard not removed.</value></data>
+  <data name="MainForm_SteamGuardRemovedCompletely" xml:space="preserve"><value>Steam Guard removed completely. maFile will be deleted after hitting okay. If you need to make a backup, now's the time.</value></data>
+  <data name="MainForm_SteamGuardSwitchedEmail" xml:space="preserve"><value>Steam Guard switched to emails. maFile will be deleted after hitting okay. If you need to make a backup, now's the time.</value></data>
+  <data name="MainForm_DeactivateFailed" xml:space="preserve"><value>Steam Guard failed to deactivate.</value></data>
+  <data name="MainForm_DeactivateNoAction" xml:space="preserve"><value>Steam Guard was not removed. No action was taken.</value></data>
+  <data name="MainForm_AligningTime" xml:space="preserve"><value>Aligning time with Steam...</value></data>
+  <data name="MainForm_SessionExpiredForAccountFormat" xml:space="preserve"><value>Your session for account {0} has expired. You will be prompted to login again.</value></data>
+  <data name="MainForm_RefreshingSession" xml:space="preserve"><value>Refreshing session...</value></data>
+  <data name="MainForm_CheckingConfirmations" xml:space="preserve"><value>Checking confirmations...</value></data>
+  <data name="MainForm_AccountNameFormat" xml:space="preserve"><value>Account: {0}</value></data>
+
+</root>

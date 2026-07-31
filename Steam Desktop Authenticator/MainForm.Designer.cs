@@ -81,7 +81,7 @@
             this.btnSteamLogin.Name = "btnSteamLogin";
             this.btnSteamLogin.Size = new System.Drawing.Size(155, 30);
             this.btnSteamLogin.TabIndex = 1;
-            this.btnSteamLogin.Text = "Setup New Account";
+            this.btnSteamLogin.Text = Strings.Get("MainForm_SetupNewAccount");
             this.btnSteamLogin.UseVisualStyleBackColor = true;
             this.btnSteamLogin.Click += new System.EventHandler(this.btnSteamLogin_Click);
             // 
@@ -96,7 +96,7 @@
             this.groupBox1.Size = new System.Drawing.Size(310, 85);
             this.groupBox1.TabIndex = 2;
             this.groupBox1.TabStop = false;
-            this.groupBox1.Text = "Login Token";
+            this.groupBox1.Text = Strings.Get("MainForm_LoginTokenGroup");
             // 
             // btnCopy
             // 
@@ -105,7 +105,7 @@
             this.btnCopy.Name = "btnCopy";
             this.btnCopy.Size = new System.Drawing.Size(112, 35);
             this.btnCopy.TabIndex = 2;
-            this.btnCopy.Text = "Copy";
+            this.btnCopy.Text = Strings.Get("Common_Copy");
             this.btnCopy.UseVisualStyleBackColor = true;
             this.btnCopy.Click += new System.EventHandler(this.btnCopy_Click);
             // 
@@ -159,7 +159,7 @@
             this.btnTradeConfirmations.Name = "btnTradeConfirmations";
             this.btnTradeConfirmations.Size = new System.Drawing.Size(145, 31);
             this.btnTradeConfirmations.TabIndex = 4;
-            this.btnTradeConfirmations.Text = "View Confirmations";
+            this.btnTradeConfirmations.Text = Strings.Get("MainForm_ViewConfirmations");
             this.btnTradeConfirmations.UseVisualStyleBackColor = true;
             this.btnTradeConfirmations.Click += new System.EventHandler(this.btnTradeConfirmations_Click);
             // 
@@ -171,7 +171,7 @@
             this.btnLoginViaQr.Name = "btnLoginViaQr";
             this.btnLoginViaQr.Size = new System.Drawing.Size(145, 31);
             this.btnLoginViaQr.TabIndex = 4;
-            this.btnLoginViaQr.Text = "Login via QR";
+            this.btnLoginViaQr.Text = Strings.Get("MainForm_LoginViaQr");
             this.btnLoginViaQr.UseVisualStyleBackColor = true;
             this.btnLoginViaQr.Click += new System.EventHandler(this.btnLoginViaQr_Click);
             // 
@@ -182,7 +182,7 @@
             this.btnManageEncryption.Name = "btnManageEncryption";
             this.btnManageEncryption.Size = new System.Drawing.Size(155, 30);
             this.btnManageEncryption.TabIndex = 6;
-            this.btnManageEncryption.Text = "Manage Encryption";
+            this.btnManageEncryption.Text = Strings.Get("MainForm_ManageEncryption");
             this.btnManageEncryption.UseVisualStyleBackColor = true;
             this.btnManageEncryption.Click += new System.EventHandler(this.btnManageEncryption_Click);
             // 
@@ -196,7 +196,7 @@
             this.groupAccount.Size = new System.Drawing.Size(310, 56);
             this.groupAccount.TabIndex = 7;
             this.groupAccount.TabStop = false;
-            this.groupAccount.Text = "Account";
+            this.groupAccount.Text = Strings.Get("MainForm_AccountGroup");
             // 
             // labelVersion
             // 
@@ -233,13 +233,13 @@
             this.menuQuit});
             this.fileToolStripMenuItem.Name = "fileToolStripMenuItem";
             this.fileToolStripMenuItem.Size = new System.Drawing.Size(37, 20);
-            this.fileToolStripMenuItem.Text = "File";
+            this.fileToolStripMenuItem.Text = Strings.Get("MainForm_MenuFile");
             // 
             // menuImportAccount
             // 
             this.menuImportAccount.Name = "menuImportAccount";
             this.menuImportAccount.Size = new System.Drawing.Size(158, 22);
-            this.menuImportAccount.Text = "Import Account";
+            this.menuImportAccount.Text = Strings.Get("Common_ImportAccount");
             this.menuImportAccount.Click += new System.EventHandler(this.menuImportAccount_Click);
             // 
             // toolStripSeparator1
@@ -251,14 +251,14 @@
             // 
             this.menuSettings.Name = "menuSettings";
             this.menuSettings.Size = new System.Drawing.Size(158, 22);
-            this.menuSettings.Text = "Settings";
+            this.menuSettings.Text = Strings.Get("SettingsForm_Title");
             this.menuSettings.Click += new System.EventHandler(this.menuSettings_Click);
             // 
             // menuQuit
             // 
             this.menuQuit.Name = "menuQuit";
             this.menuQuit.Size = new System.Drawing.Size(158, 22);
-            this.menuQuit.Text = "Quit";
+            this.menuQuit.Text = Strings.Get("Common_Quit");
             this.menuQuit.Click += new System.EventHandler(this.menuQuit_Click);
             // 
             // accountToolStripMenuItem
@@ -270,13 +270,13 @@
             this.menuDeactivateAuthenticator});
             this.accountToolStripMenuItem.Name = "accountToolStripMenuItem";
             this.accountToolStripMenuItem.Size = new System.Drawing.Size(111, 20);
-            this.accountToolStripMenuItem.Text = "Selected Account";
+            this.accountToolStripMenuItem.Text = Strings.Get("MainForm_MenuSelectedAccount");
             // 
             // menuLoginAgain
             // 
             this.menuLoginAgain.Name = "menuLoginAgain";
             this.menuLoginAgain.Size = new System.Drawing.Size(205, 22);
-            this.menuLoginAgain.Text = "Login again";
+            this.menuLoginAgain.Text = Strings.Get("MainForm_MenuLoginAgain");
             this.menuLoginAgain.Click += new System.EventHandler(this.menuLoginAgain_Click);
             // 
             // toolStripSeparator4
@@ -288,20 +288,20 @@
             // 
             this.menuRemoveAccountFromManifest.Name = "menuRemoveAccountFromManifest";
             this.menuRemoveAccountFromManifest.Size = new System.Drawing.Size(205, 22);
-            this.menuRemoveAccountFromManifest.Text = "Remove from manifest";
+            this.menuRemoveAccountFromManifest.Text = Strings.Get("MainForm_MenuRemoveFromManifest");
             this.menuRemoveAccountFromManifest.Click += new System.EventHandler(this.menuRemoveAccountFromManifest_Click);
             // 
             // menuDeactivateAuthenticator
             // 
             this.menuDeactivateAuthenticator.Name = "menuDeactivateAuthenticator";
             this.menuDeactivateAuthenticator.Size = new System.Drawing.Size(205, 22);
-            this.menuDeactivateAuthenticator.Text = "Deactivate Authenticator";
+            this.menuDeactivateAuthenticator.Text = Strings.Get("MainForm_MenuDeactivateAuthenticator");
             this.menuDeactivateAuthenticator.Click += new System.EventHandler(this.menuDeactivateAuthenticator_Click);
             // 
             // trayIcon
             // 
             this.trayIcon.ContextMenuStrip = this.menuStripTray;
-            this.trayIcon.Text = "Steam Desktop Authenticator";
+            this.trayIcon.Text = Strings.Get("App_Title");
             this.trayIcon.Visible = true;
             this.trayIcon.MouseDoubleClick += new System.Windows.Forms.MouseEventHandler(this.trayIcon_MouseDoubleClick);
             // 
@@ -322,7 +322,7 @@
             // 
             this.trayRestore.Name = "trayRestore";
             this.trayRestore.Size = new System.Drawing.Size(215, 22);
-            this.trayRestore.Text = "Restore";
+            this.trayRestore.Text = Strings.Get("MainForm_TrayRestore");
             this.trayRestore.Click += new System.EventHandler(this.trayRestore_Click);
             // 
             // toolStripSeparator2
@@ -344,14 +344,14 @@
             // 
             this.trayTradeConfirmations.Name = "trayTradeConfirmations";
             this.trayTradeConfirmations.Size = new System.Drawing.Size(215, 22);
-            this.trayTradeConfirmations.Text = "Trade Confirmations";
+            this.trayTradeConfirmations.Text = Strings.Get("ConfirmationFormWeb_Title");
             this.trayTradeConfirmations.Click += new System.EventHandler(this.trayTradeConfirmations_Click);
             // 
             // trayCopySteamGuard
             // 
             this.trayCopySteamGuard.Name = "trayCopySteamGuard";
             this.trayCopySteamGuard.Size = new System.Drawing.Size(215, 22);
-            this.trayCopySteamGuard.Text = "Copy SG code to clipboard";
+            this.trayCopySteamGuard.Text = Strings.Get("MainForm_TrayCopySteamGuard");
             this.trayCopySteamGuard.Click += new System.EventHandler(this.trayCopySteamGuard_Click);
             // 
             // toolStripSeparator3
@@ -363,7 +363,7 @@
             // 
             this.trayQuit.Name = "trayQuit";
             this.trayQuit.Size = new System.Drawing.Size(215, 22);
-            this.trayQuit.Text = "Quit";
+            this.trayQuit.Text = Strings.Get("Common_Quit");
             this.trayQuit.Click += new System.EventHandler(this.trayQuit_Click);
             // 
             // timerTradesPopup
@@ -401,7 +401,7 @@
             this.label1.Name = "label1";
             this.label1.Size = new System.Drawing.Size(36, 13);
             this.label1.TabIndex = 13;
-            this.label1.Text = "Filter:";
+            this.label1.Text = Strings.Get("MainForm_FilterLabel");
             // 
             // panelButtons
             // 
@@ -439,7 +439,7 @@
             this.MinimumSize = new System.Drawing.Size(350, 400);
             this.Name = "MainForm";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
-            this.Text = "Steam Desktop Authenticator";
+            this.Text = Strings.Get("App_Title");
             this.FormClosing += new System.Windows.Forms.FormClosingEventHandler(this.MainForm_FormClosing);
             this.Load += new System.EventHandler(this.MainForm_Load);
             this.Shown += new System.EventHandler(this.MainForm_Shown);

@@ -54,7 +54,7 @@
             this.btnDeny.Name = "btnDeny";
             this.btnDeny.Size = new System.Drawing.Size(69, 32);
             this.btnDeny.TabIndex = 2;
-            this.btnDeny.Text = "Deny";
+            this.btnDeny.Text = Strings.Get("Common_Deny");
             this.btnDeny.UseVisualStyleBackColor = false;
             this.btnDeny.Click += new System.EventHandler(this.btnDeny_Click);
             // 
@@ -66,7 +66,7 @@
             this.btnAccept.Name = "btnAccept";
             this.btnAccept.Size = new System.Drawing.Size(67, 32);
             this.btnAccept.TabIndex = 2;
-            this.btnAccept.Text = "Accept";
+            this.btnAccept.Text = Strings.Get("Common_Accept");
             this.btnAccept.UseVisualStyleBackColor = false;
             this.btnAccept.Click += new System.EventHandler(this.btnAccept_Click);
             // 
@@ -104,7 +104,7 @@
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedToolWindow;
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.Name = "TradePopupForm";
-            this.Text = "New confirmation";
+            this.Text = Strings.Get("TradePopupForm_Title");
             this.TopMost = true;
             this.Load += new System.EventHandler(this.TradePopupForm_Load);
             this.ResumeLayout(false);

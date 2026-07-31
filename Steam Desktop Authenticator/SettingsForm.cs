@@ -8,6 +8,20 @@ namespace Steam_Desktop_Authenticator
         Manifest manifest;
         bool fullyLoaded = false;
 
+        private class LanguageItem
+        {
+            public string Name;
+            public string Code;
+            public override string ToString() => Name;
+        }
+
+        private static readonly LanguageItem[] AvailableLanguages = new[]
+        {
+            new LanguageItem { Name = "English", Code = "en" },
+            new LanguageItem { Name = "Русский", Code = "ru" },
+            new LanguageItem { Name = "Українська", Code = "uk" },
+        };
+
         public SettingsForm()
         {
             InitializeComponent();
@@ -20,6 +34,10 @@ namespace Steam_Desktop_Authenticator
             chkCheckAll.Checked = manifest.CheckAllAccounts;
             chkConfirmMarket.Checked = manifest.AutoConfirmMarketTransactions;
             chkConfirmTrades.Checked = manifest.AutoConfirmTrades;
+
+            cmbLanguage.Items.AddRange(AvailableLanguages);
+            int selectedLanguage = Array.FindIndex(AvailableLanguages, l => l.Code == manifest.Language);
+            cmbLanguage.SelectedIndex = selectedLanguage >= 0 ? selectedLanguage : 0;
 
             SetControlsEnabledState(chkPeriodicChecking.Checked);
 
@@ -35,7 +53,7 @@ namespace Steam_Desktop_Authenticator
         {
             if (!fullyLoaded) return;
 
-            var result = MessageBox.Show("Warning: enabling this will severely reduce the security of your items! Use of this option is at your own risk. Would you like to continue?", "Warning!", MessageBoxButtons.YesNo);
+            var result = MessageBox.Show(Strings.Get("SettingsForm_SecurityWarning"), Strings.Get("Common_Warning"), MessageBoxButtons.YesNo);
             if (result == DialogResult.No)
             {
                 affectedBox.Checked = false;
@@ -44,12 +62,22 @@ namespace Steam_Desktop_Authenticator
 
         private void btnSave_Click(object sender, EventArgs e)
         {
+            string oldLanguage = manifest.Language;
+            string newLanguage = ((LanguageItem)cmbLanguage.SelectedItem).Code;
+
             manifest.PeriodicChecking = chkPeriodicChecking.Checked;
             manifest.PeriodicCheckingInterval = (int)numPeriodicInterval.Value;
             manifest.CheckAllAccounts = chkCheckAll.Checked;
             manifest.AutoConfirmMarketTransactions = chkConfirmMarket.Checked;
             manifest.AutoConfirmTrades = chkConfirmTrades.Checked;
+            manifest.Language = newLanguage;
             manifest.Save();
+
+            if (newLanguage != oldLanguage)
+            {
+                MessageBox.Show(Strings.Get("SettingsForm_RestartRequired"), Strings.Get("SettingsForm_Title"), MessageBoxButtons.OK, MessageBoxIcon.Information);
+            }
+
             this.Close();
         }
 

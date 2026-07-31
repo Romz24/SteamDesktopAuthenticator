@@ -1,4 +1,6 @@
 ﻿using System;
+using System.Globalization;
+using System.Threading;
 using System.Windows.Forms;
 using System.Diagnostics;
 using CommandLine;
@@ -31,6 +33,22 @@ namespace Steam_Desktop_Authenticator
             }
         }
 
+        private static void ApplyLanguage(string language)
+        {
+            if (string.IsNullOrEmpty(language)) return;
+
+            try
+            {
+                CultureInfo culture = CultureInfo.GetCultureInfo(language);
+                Thread.CurrentThread.CurrentUICulture = culture;
+                CultureInfo.DefaultThreadCurrentUICulture = culture;
+            }
+            catch (CultureNotFoundException)
+            {
+                // Unknown language code, fall back to the OS default.
+            }
+        }
+
         /// <summary>
         /// The main entry point for the application.
         /// </summary>
@@ -40,7 +58,7 @@ namespace Steam_Desktop_Authenticator
             // run the program only once
             if (PriorProcess() != null)
             {
-                MessageBox.Show("Another instance of the app is already running.");
+                MessageBox.Show(Strings.Get("Program_AlreadyRunning"));
                 return;
             }
 
@@ -57,19 +75,21 @@ namespace Steam_Desktop_Authenticator
             try
             {
                 man = Manifest.GetManifest();
+                ApplyLanguage(man.Language);
             }
             catch (ManifestParseException)
             {
                 // Manifest file was corrupted, generate a new one.
                 try
                 {
-                    MessageBox.Show("Your settings were unexpectedly corrupted and were reset to defaults.", "Steam Desktop Authenticator", MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
+                    MessageBox.Show(Strings.Get("Common_SettingsCorrupted"), Strings.Get("App_Title"), MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
                     man = Manifest.GenerateNewManifest(true);
+                    ApplyLanguage(man.Language);
                 }
                 catch (MaFileEncryptedException)
                 {
                     // An maFile was encrypted, we're fucked.
-                    MessageBox.Show("Sorry, but SDA was unable to recover your accounts since you used encryption.\nYou'll need to recover your Steam accounts by removing the authenticator.\nClick OK to view instructions.", "Steam Desktop Authenticator", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    MessageBox.Show(Strings.Get("Common_UnrecoverableEncrypted"), Strings.Get("App_Title"), MessageBoxButtons.OK, MessageBoxIcon.Error);
                     Process.Start(@"https://github.com/Jessecar96/SteamDesktopAuthenticator/wiki/Help!-I'm-locked-out-of-my-account");
                     return;
                 }

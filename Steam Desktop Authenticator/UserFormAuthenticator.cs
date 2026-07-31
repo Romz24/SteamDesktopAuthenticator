@@ -27,7 +27,7 @@ namespace Steam_Desktop_Authenticator
             {
                 // After 2 tries tell the user that there seems to be an issue
                 if (deviceCodesGenerated > 2)
-                    MessageBox.Show("There seems to be an issue logging into your account with these two factor codes. Are you sure SDA is still your authenticator?");
+                    MessageBox.Show(Strings.Get("UserFormAuthenticator_TwoFactorIssue"));
 
                 await Task.Delay(30000);
             }
@@ -36,7 +36,7 @@ namespace Steam_Desktop_Authenticator
 
             if (account == null)
             {
-                MessageBox.Show("This account already has an authenticator linked. You must remove that authenticator to add SDA as your authenticator.", "Steam Login", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                MessageBox.Show(Strings.Get("Common_AuthenticatorAlreadyLinked"), Strings.Get("Common_SteamLoginTitle"), MessageBoxButtons.OK, MessageBoxIcon.Error);
                 return null;
             }
             else
@@ -50,10 +50,10 @@ namespace Steam_Desktop_Authenticator
 
         public Task<string> GetEmailCodeAsync(string email, bool previousCodeWasIncorrect)
         {
-            string message = "Enter the code sent to your email:";
+            string message = Strings.Get("UserFormAuthenticator_EmailCodePrompt");
             if (previousCodeWasIncorrect)
             {
-                message = "The code you provided was invalid. Enter the code sent to your email:";
+                message = Strings.Get("UserFormAuthenticator_EmailCodeInvalidPrompt");
             }
 
             InputForm emailForm = new InputForm(message);

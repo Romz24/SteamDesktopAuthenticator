@@ -2,6 +2,7 @@
 using SteamAuth;
 using System;
 using System.Collections.Generic;
+using System.Globalization;
 using System.IO;
 using System.Linq;
 using System.Text;
@@ -20,6 +21,11 @@ namespace Steam_Desktop_Authenticator
 
         [JsonProperty("first_qr")]
         public bool FirstQR { get; set; } = true;
+
+        [JsonProperty("language")]
+        public string Language { get; set; } = "en";
+
+        public static readonly string[] SupportedLanguages = { "en", "ru", "uk" };
 
         [JsonProperty("entries")]
         public List<ManifestEntry> Entries { get; set; }
@@ -43,7 +49,16 @@ namespace Steam_Desktop_Authenticator
 
         public static string GetExecutableDir()
         {
-            return Path.GetDirectoryName(System.Reflection.Assembly.GetEntryAssembly().Location);
+            return AppContext.BaseDirectory.TrimEnd('\\', '/');
+        }
+
+        /// <summary>
+        /// Detects the OS-installed UI language and returns it if we have a translation for it, otherwise falls back to English.
+        /// </summary>
+        private static string DetectSystemLanguage()
+        {
+            string systemLanguage = CultureInfo.InstalledUICulture.TwoLetterISOLanguageName;
+            return SupportedLanguages.Contains(systemLanguage) ? systemLanguage : "en";
         }
 
         public static Manifest GetManifest(bool forceLoad = false)
@@ -103,6 +118,7 @@ namespace Steam_Desktop_Authenticator
             newManifest.AutoConfirmTrades = false;
             newManifest.Entries = new List<ManifestEntry>();
             newManifest.FirstRun = true;
+            newManifest.Language = DetectSystemLanguage();
 
             // Take a pre-manifest version and generate a manifest for it.
             if (scanDir)
@@ -137,7 +153,7 @@ namespace Steam_Desktop_Authenticator
                     if (newManifest.Entries.Count > 0)
                     {
                         newManifest.Save();
-                        newManifest.PromptSetupPassKey("This version of SDA has encryption. Please enter a passkey below, or hit cancel to remain unencrypted");
+                        newManifest.PromptSetupPassKey(Strings.Get("Manifest_EncryptionIntroPrompt"));
                     }
                 }
             }
@@ -164,7 +180,7 @@ namespace Steam_Desktop_Authenticator
             string passKey = null;
             while (!passKeyValid)
             {
-                InputForm passKeyForm = new InputForm("Please enter your encryption passkey.", true);
+                InputForm passKeyForm = new InputForm(Strings.Get("Common_EnterEncryptionPasskeySimplePrompt"), true);
                 passKeyForm.ShowDialog();
                 if (!passKeyForm.Canceled)
                 {
@@ -172,7 +188,7 @@ namespace Steam_Desktop_Authenticator
                     passKeyValid = this.VerifyPasskey(passKey);
                     if (!passKeyValid)
                     {
-                        MessageBox.Show("That passkey is invalid.");
+                        MessageBox.Show(Strings.Get("Common_PasskeyInvalid"));
                     }
                 }
                 else
@@ -183,21 +199,21 @@ namespace Steam_Desktop_Authenticator
             return passKey;
         }
 
-        public string PromptSetupPassKey(string initialPrompt = "Enter passkey, or hit cancel to remain unencrypted.")
+        public string PromptSetupPassKey(string initialPrompt = null)
         {
-            InputForm newPassKeyForm = new InputForm(initialPrompt);
+            InputForm newPassKeyForm = new InputForm(initialPrompt ?? Strings.Get("Common_EnterPasskeyOrCancelPrompt"));
             newPassKeyForm.ShowDialog();
             if (newPassKeyForm.Canceled || newPassKeyForm.txtBox.Text.Length == 0)
             {
-                MessageBox.Show("WARNING: You chose to not encrypt your files. Doing so imposes a security risk for yourself. If an attacker were to gain access to your computer, they could completely lock you out of your account and steal all your items.");
+                MessageBox.Show(Strings.Get("Common_NoEncryptionWarning"));
                 return null;
             }
 
-            InputForm newPassKeyForm2 = new InputForm("Confirm new passkey.");
+            InputForm newPassKeyForm2 = new InputForm(Strings.Get("Common_ConfirmNewPasskeyPrompt"));
             newPassKeyForm2.ShowDialog();
             if (newPassKeyForm2.Canceled)
             {
-                MessageBox.Show("WARNING: You chose to not encrypt your files. Doing so imposes a security risk for yourself. If an attacker were to gain access to your computer, they could completely lock you out of your account and steal all your items.");
+                MessageBox.Show(Strings.Get("Common_NoEncryptionWarning"));
                 return null;
             }
 
@@ -206,18 +222,18 @@ namespace Steam_Desktop_Authenticator
 
             if (newPassKey != confirmPassKey)
             {
-                MessageBox.Show("Passkeys do not match.");
+                MessageBox.Show(Strings.Get("Common_PasskeysDoNotMatch"));
                 return null;
             }
 
             if (!this.ChangeEncryptionKey(null, newPassKey))
             {
-                MessageBox.Show("Unable to set passkey.");
+                MessageBox.Show(Strings.Get("Manifest_UnableToSetPasskey"));
                 return null;
             }
             else
             {
-                MessageBox.Show("Passkey successfully set.");
+                MessageBox.Show(Strings.Get("Manifest_PasskeySuccessfullySet"));
             }
 
             return newPassKey;
