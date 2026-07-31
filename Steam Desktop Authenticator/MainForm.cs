@@ -16,6 +16,7 @@ using ZXing.Common;
 using ZXing;
 using ZXing.Windows.Compatibility;
 using System.Threading.Tasks;
+using System.Net.Http;
 
 namespace Steam_Desktop_Authenticator
 {
@@ -454,40 +455,46 @@ namespace Steam_Desktop_Authenticator
 
         private void trayAccountList_SelectedIndexChanged(object sender, EventArgs e)
         {
-            listAccounts.SelectedIndex = trayAccountList.SelectedIndex;
+            if (trayAccountList.SelectedIndex < 0) return;
+
+            SteamGuardAccount account = allAccounts.FirstOrDefault(a => GetDisplayName(a) == (string)trayAccountList.SelectedItem);
+            if (account == null) return;
+
+            foreach (ListViewItem item in listAccounts.Items)
+            {
+                if (ReferenceEquals(item.Tag, account))
+                {
+                    item.Selected = true;
+                    item.EnsureVisible();
+                    break;
+                }
+            }
         }
 
 
         // Misc UI handlers
         private void listAccounts_SelectedValueChanged(object sender, EventArgs e)
         {
-            for (int i = 0; i < allAccounts.Length; i++)
-            {
-                // Check if index is out of bounds first
-                if (i < 0 || listAccounts.SelectedIndex < 0)
-                    continue;
+            if (listAccounts.SelectedItems.Count == 0) return;
 
-                SteamGuardAccount account = allAccounts[i];
-                if (account.AccountName == (string)listAccounts.Items[listAccounts.SelectedIndex])
-                {
-                    trayAccountList.Text = account.AccountName;
-                    currentAccount = account;
-                    loadAccountInfo();
-                    break;
-                }
-            }
+            SteamGuardAccount account = (SteamGuardAccount)listAccounts.SelectedItems[0].Tag;
+            trayAccountList.Text = GetDisplayName(account);
+            currentAccount = account;
+            loadAccountInfo();
         }
 
         private void txtAccSearch_TextChanged(object sender, EventArgs e)
         {
-            List<string> names = new List<string>(getAllNames());
-            names = names.FindAll(new Predicate<string>(IsFilter));
-
             listAccounts.Items.Clear();
-            listAccounts.Items.AddRange(names.ToArray());
-
             trayAccountList.Items.Clear();
-            trayAccountList.Items.AddRange(names.ToArray());
+
+            foreach (SteamGuardAccount account in allAccounts)
+            {
+                if (!IsFilter(account)) continue;
+
+                listAccounts.Items.Add(CreateAccountListItem(account));
+                trayAccountList.Items.Add(GetDisplayName(account));
+            }
         }
 
 
@@ -640,8 +647,6 @@ namespace Steam_Desktop_Authenticator
             currentAccount = null;
 
             listAccounts.Items.Clear();
-            listAccounts.SelectedIndex = -1;
-
             trayAccountList.Items.Clear();
             trayAccountList.SelectedIndex = -1;
 
@@ -649,20 +654,139 @@ namespace Steam_Desktop_Authenticator
 
             if (allAccounts.Length > 0)
             {
-                for (int i = 0; i < allAccounts.Length; i++)
+                foreach (SteamGuardAccount account in allAccounts)
                 {
-                    SteamGuardAccount account = allAccounts[i];
-                    listAccounts.Items.Add(account.AccountName);
-                    trayAccountList.Items.Add(account.AccountName);
+                    listAccounts.Items.Add(CreateAccountListItem(account));
+                    trayAccountList.Items.Add(GetDisplayName(account));
                 }
 
-                listAccounts.SelectedIndex = 0;
+                if (listAccounts.Items.Count > 0)
+                {
+                    listAccounts.Items[0].Selected = true;
+                    listAccounts.Items[0].Focused = true;
+                }
                 trayAccountList.SelectedIndex = 0;
-
-                listAccounts.Sorted = true;
-                trayAccountList.Sorted = true;
             }
             menuDeactivateAuthenticator.Enabled = btnTradeConfirmations.Enabled = btnLoginViaQr.Enabled = allAccounts.Length > 0;
+
+            _ = RefreshMissingNicknamesAsync(allAccounts);
+        }
+
+        /// <summary>
+        /// Builds a table row (login + cached nickname column) for the accounts list, with the
+        /// account itself stashed in Tag so selection doesn't need fragile string matching.
+        /// </summary>
+        private ListViewItem CreateAccountListItem(SteamGuardAccount account)
+        {
+            var entry = manifest.Entries.FirstOrDefault(e => e.SteamID == account.Session.SteamID);
+            var item = new ListViewItem(account.AccountName) { Tag = account };
+            item.SubItems.Add(entry?.PersonaName ?? "");
+            return item;
+        }
+
+        /// <summary>
+        /// Returns "login (Nickname)" if we have a cached Steam persona name for this account, otherwise just the login.
+        /// Used for the tray dropdown, which is a plain combo box rather than a table.
+        /// </summary>
+        private string GetDisplayName(SteamGuardAccount account)
+        {
+            var entry = manifest.Entries.FirstOrDefault(e => e.SteamID == account.Session.SteamID);
+            return entry != null && !string.IsNullOrEmpty(entry.PersonaName)
+                ? $"{account.AccountName} ({entry.PersonaName})"
+                : account.AccountName;
+        }
+
+        // Re-fetch a cached nickname if it's older than this, in case the player renamed themselves.
+        private static readonly TimeSpan NicknameRefreshInterval = TimeSpan.FromDays(7);
+
+        /// <summary>
+        /// Looks up the Steam persona name (nickname) for accounts that don't have one cached yet
+        /// or whose cached one is older than <see cref="NicknameRefreshInterval"/>, caches it in
+        /// the manifest, and updates the already-rendered list items in place.
+        /// </summary>
+        private async Task RefreshMissingNicknamesAsync(SteamGuardAccount[] accountsSnapshot)
+        {
+            bool anySaved = false;
+
+            foreach (var account in accountsSnapshot)
+            {
+                if (allAccounts != accountsSnapshot) return; // list was reloaded since; abandon this stale batch
+
+                var entry = manifest.Entries.FirstOrDefault(e => e.SteamID == account.Session.SteamID);
+                if (entry == null)
+                    continue;
+
+                bool isStale = entry.PersonaNameUpdated == null
+                    || DateTime.UtcNow - entry.PersonaNameUpdated.Value > NicknameRefreshInterval;
+                if (!string.IsNullOrEmpty(entry.PersonaName) && !isStale)
+                    continue;
+
+                string oldTrayDisplayName = GetDisplayName(account);
+                string personaName = await FetchPersonaNameAsync(account);
+                if (string.IsNullOrEmpty(personaName))
+                    continue;
+
+                entry.PersonaName = personaName;
+                entry.PersonaNameUpdated = DateTime.UtcNow;
+                anySaved = true;
+
+                if (allAccounts != accountsSnapshot) return;
+
+                foreach (ListViewItem item in listAccounts.Items)
+                {
+                    if (ReferenceEquals(item.Tag, account))
+                    {
+                        item.SubItems[1].Text = personaName;
+                        break;
+                    }
+                }
+                ReplaceListItem(trayAccountList.Items, oldTrayDisplayName, GetDisplayName(account));
+            }
+
+            if (anySaved)
+            {
+                manifest.Save();
+            }
+        }
+
+        private static void ReplaceListItem(System.Collections.IList items, string oldText, string newText)
+        {
+            int index = items.IndexOf(oldText);
+            if (index >= 0)
+            {
+                items[index] = newText;
+            }
+        }
+
+        private static readonly HttpClient _profileHttpClient = new HttpClient();
+
+        // Steam account IDs (the 32-bit part used by the miniprofile endpoint) are the
+        // 64-bit SteamID minus this fixed offset (the base value of the "individual" ID range).
+        private const ulong SteamId64ToAccountIdOffset = 76561197960265728UL;
+
+        // Key-free endpoint - the same one Steam's own site uses for hover-card previews.
+        private async Task<string> FetchPersonaNameAsync(SteamGuardAccount account)
+        {
+            try
+            {
+                ulong accountId32 = account.Session.SteamID - SteamId64ToAccountIdOffset;
+                string url = $"https://steamcommunity.com/miniprofile/{accountId32}/json";
+
+                string json = await _profileHttpClient.GetStringAsync(url);
+                var profile = JsonConvert.DeserializeObject<MiniProfileResponse>(json);
+
+                return string.IsNullOrWhiteSpace(profile?.PersonaName) ? null : profile.PersonaName;
+            }
+            catch (Exception)
+            {
+                return null;
+            }
+        }
+
+        private class MiniProfileResponse
+        {
+            [JsonProperty("persona_name")]
+            public string PersonaName { get; set; }
         }
 
         private void listAccounts_KeyDown(object sender, KeyEventArgs e)
@@ -671,8 +795,10 @@ namespace Steam_Desktop_Authenticator
             {
                 if (e.KeyCode == Keys.Up || e.KeyCode == Keys.Down)
                 {
-                    int to = listAccounts.SelectedIndex - (e.KeyCode == Keys.Up ? 1 : -1);
-                    manifest.MoveEntry(listAccounts.SelectedIndex, to);
+                    if (listAccounts.SelectedIndices.Count == 0) return;
+                    int from = listAccounts.SelectedIndices[0];
+                    int to = from - (e.KeyCode == Keys.Up ? 1 : -1);
+                    manifest.MoveEntry(from, to);
                     loadAccountsList();
                 }
                 return;
@@ -698,8 +824,9 @@ namespace Steam_Desktop_Authenticator
             return (key >= Keys.D0 && key <= Keys.D9) || (key >= Keys.NumPad0 && key <= Keys.NumPad9);
         }
 
-        private bool IsFilter(string f)
+        private bool IsFilter(SteamGuardAccount account)
         {
+            string f = GetDisplayName(account);
             if (txtAccSearch.Text.StartsWith("~"))
             {
                 try
@@ -716,16 +843,6 @@ namespace Steam_Desktop_Authenticator
             {
                 return f.Contains(txtAccSearch.Text.ToLower());
             }
-        }
-
-        private string[] getAllNames()
-        {
-            string[] itemArray = new string[allAccounts.Length];
-            for (int i = 0; i < itemArray.Length; i++)
-            {
-                itemArray[i] = allAccounts[i].AccountName;
-            }
-            return itemArray;
         }
 
         private void loadSettings()

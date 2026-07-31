@@ -222,6 +222,8 @@ Steam Desktop Authenticator</value></data>
   <data name="MainForm_TrayRestore" xml:space="preserve"><value>Развернуть</value></data>
   <data name="MainForm_TrayCopySteamGuard" xml:space="preserve"><value>Скопировать код SG в буфер обмена</value></data>
   <data name="MainForm_FilterLabel" xml:space="preserve"><value>Фильтр:</value></data>
+  <data name="MainForm_ColumnLogin" xml:space="preserve"><value>Логин</value></data>
+  <data name="MainForm_ColumnNickname" xml:space="preserve"><value>Ник</value></data>
   <data name="MainForm_UnableToReadSettings" xml:space="preserve"><value>Не удалось прочитать настройки. Попробуйте перезапустить SDA.</value></data>
   <data name="MainForm_QrHowToUse" xml:space="preserve"><value>Наведите курсор на QR-код Steam и нажмите ПРАВЫЙ CTRL, чтобы войти</value></data>
   <data name="MainForm_QrHowToUseTitle" xml:space="preserve"><value>Как использовать?</value></data>

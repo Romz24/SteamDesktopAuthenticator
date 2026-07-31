@@ -487,6 +487,12 @@ namespace Steam_Desktop_Authenticator
 
             [JsonProperty("steamid")]
             public ulong SteamID { get; set; }
+
+            [JsonProperty("persona_name")]
+            public string PersonaName { get; set; }
+
+            [JsonProperty("persona_name_updated")]
+            public DateTime? PersonaNameUpdated { get; set; }
         }
     }
 }

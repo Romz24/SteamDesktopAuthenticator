@@ -222,6 +222,8 @@ for confirmations</value></data>
   <data name="MainForm_TrayRestore" xml:space="preserve"><value>Restore</value></data>
   <data name="MainForm_TrayCopySteamGuard" xml:space="preserve"><value>Copy SG code to clipboard</value></data>
   <data name="MainForm_FilterLabel" xml:space="preserve"><value>Filter:</value></data>
+  <data name="MainForm_ColumnLogin" xml:space="preserve"><value>Login</value></data>
+  <data name="MainForm_ColumnNickname" xml:space="preserve"><value>Nickname</value></data>
   <data name="MainForm_UnableToReadSettings" xml:space="preserve"><value>Unable to read your settings. Try restating SDA.</value></data>
   <data name="MainForm_QrHowToUse" xml:space="preserve"><value>Move your cursor to Steam QR code and press RIGHT CTRL to sign in</value></data>
   <data name="MainForm_QrHowToUseTitle" xml:space="preserve"><value>How to use?</value></data>

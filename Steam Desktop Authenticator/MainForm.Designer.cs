@@ -36,7 +36,9 @@
             this.btnCopy = new System.Windows.Forms.Button();
             this.pbTimeout = new System.Windows.Forms.ProgressBar();
             this.txtLoginToken = new System.Windows.Forms.TextBox();
-            this.listAccounts = new System.Windows.Forms.ListBox();
+            this.listAccounts = new System.Windows.Forms.ListView();
+            this.columnLogin = new System.Windows.Forms.ColumnHeader();
+            this.columnNickname = new System.Windows.Forms.ColumnHeader();
             this.timerSteamGuard = new System.Windows.Forms.Timer(this.components);
             this.btnTradeConfirmations = new System.Windows.Forms.Button();
             this.btnLoginViaQr = new System.Windows.Forms.Button();
@@ -138,13 +140,30 @@
             this.listAccounts.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
             | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
-            this.listAccounts.FormattingEnabled = true;
+            this.listAccounts.Columns.AddRange(new System.Windows.Forms.ColumnHeader[] {this.columnLogin, this.columnNickname});
+            this.listAccounts.FullRowSelect = true;
+            this.listAccounts.GridLines = true;
+            this.listAccounts.HideSelection = false;
             this.listAccounts.Location = new System.Drawing.Point(12, 217);
+            this.listAccounts.MultiSelect = false;
             this.listAccounts.Name = "listAccounts";
             this.listAccounts.Size = new System.Drawing.Size(310, 186);
+            this.listAccounts.Sorting = System.Windows.Forms.SortOrder.Ascending;
             this.listAccounts.TabIndex = 3;
-            this.listAccounts.SelectedValueChanged += new System.EventHandler(this.listAccounts_SelectedValueChanged);
+            this.listAccounts.UseCompatibleStateImageBehavior = false;
+            this.listAccounts.View = System.Windows.Forms.View.Details;
+            this.listAccounts.SelectedIndexChanged += new System.EventHandler(this.listAccounts_SelectedValueChanged);
             this.listAccounts.KeyDown += new System.Windows.Forms.KeyEventHandler(this.listAccounts_KeyDown);
+            //
+            // columnLogin
+            //
+            this.columnLogin.Text = Strings.Get("MainForm_ColumnLogin");
+            this.columnLogin.Width = 152;
+            //
+            // columnNickname
+            //
+            this.columnNickname.Text = Strings.Get("MainForm_ColumnNickname");
+            this.columnNickname.Width = 152;
             // 
             // timerSteamGuard
             // 
@@ -333,11 +352,10 @@
             // trayAccountList
             // 
             this.trayAccountList.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
-            this.trayAccountList.Items.AddRange(new object[] {
-            "test1",
-            "test2"});
+            this.trayAccountList.Items.AddRange(new object[] {"test1", "test2"});
+            this.trayAccountList.DropDownWidth = 260;
             this.trayAccountList.Name = "trayAccountList";
-            this.trayAccountList.Size = new System.Drawing.Size(121, 23);
+            this.trayAccountList.Size = new System.Drawing.Size(220, 23);
             this.trayAccountList.SelectedIndexChanged += new System.EventHandler(this.trayAccountList_SelectedIndexChanged);
             // 
             // trayTradeConfirmations
@@ -462,7 +480,9 @@
         private System.Windows.Forms.GroupBox groupBox1;
         private System.Windows.Forms.ProgressBar pbTimeout;
         private System.Windows.Forms.TextBox txtLoginToken;
-        private System.Windows.Forms.ListBox listAccounts;
+        private System.Windows.Forms.ListView listAccounts;
+        private System.Windows.Forms.ColumnHeader columnLogin;
+        private System.Windows.Forms.ColumnHeader columnNickname;
         private System.Windows.Forms.Timer timerSteamGuard;
         private System.Windows.Forms.Button btnTradeConfirmations;
         private System.Windows.Forms.Button btnLoginViaQr;
